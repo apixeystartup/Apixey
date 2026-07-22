@@ -1,0 +1,39 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/home", "destination": "/", "permanent": true },
+    { "source": "/home.html", "destination": "/", "permanent": true }
+  ],
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "https://brainvoiceai.wixstudio.com/my-site-2/blank"
+    },
+    {
+      "source": "/blogs",
+      "destination": "https://brainvoiceai.wixstudio.com/my-site-2/blank-1"
+    },
+    {
+      "source": "/careers",
+      "destination": "https://brainvoiceai.wixstudio.com/my-site-2/blank-2"
+    },
+    {
+      "source": "/success-stories",
+      "destination": "https://brainvoiceai.wixstudio.com/my-site-2/blank-3"
+    },
+    {
+      "source": "/get-started",
+      "destination": "https://brainvoiceai.wixstudio.com/my-site-2/blank-4"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" }
+      ]
+    }
+  ]
+}
