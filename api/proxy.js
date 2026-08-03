@@ -14,10 +14,9 @@ const HEADER_CSS = `
   .btn-text { font-size: 15px; font-weight: 500; letter-spacing: 0.5px; }
 
   .bv-header {
-    position: fixed; top: 0; z-index: 50; width: 100%;
-    padding: 35px 20px 20px 20px;
+    position: relative; z-index: 50; width: 100%;
+    padding: 40px 20px 20px 20px;
     background: rgba(255,255,255,0.95);
-    transition: padding 0.3s ease;
   }
   .bv-header-inner {
     position: relative; width: 100%;
@@ -98,7 +97,7 @@ function buildHeader() {
 <header class="bv-header">
   <div class="bv-header-inner">
     <a href="/" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
-      <span style="font-size:30px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
+      <span style="font-family:'ki',sans-serif;font-size:30px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
     </a>
     <div style="display:flex;flex-direction:row;align-items:center;gap:12px;">
       <div id="bv-nav-links" class="bv-nav-links font-heading">
