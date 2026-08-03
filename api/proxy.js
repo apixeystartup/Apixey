@@ -93,6 +93,7 @@ function buildHeader() {
     { slug: 'blogs', label: 'Blogs' },
     { slug: 'careers', label: 'Careers' },
     { slug: 'success-stories', label: 'Success Stories' },
+    { slug: 'get-started', label: 'Get Started' },
   ];
 
   const navLinksHtml = links.map((l, i) => {
