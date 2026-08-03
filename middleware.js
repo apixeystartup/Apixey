@@ -11,7 +11,8 @@ export const config = {
 };
 
 export default async function middleware(request) {
-  const { pathname } = request.nextUrl;
+  const url = new URL(request.url);
+  const pathname = url.pathname;
   const wixUrl = WIX_MAP[pathname];
   if (!wixUrl) return;
 
