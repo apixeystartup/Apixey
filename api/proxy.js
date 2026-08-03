@@ -98,10 +98,10 @@ function buildHeader() {
   return `<style>${HEADER_CSS}</style>
 <header class="bv-header">
   <div class="bv-header-inner">
-    <a href="/" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
+    <a href="/" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding-left:40px;">
       <span style="font-family:'ki',sans-serif;font-size:30px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
     </a>
-      <div style="display:flex;flex-direction:row;align-items:center;gap:12px;">
+      <div style="display:flex;flex-direction:row;align-items:center;gap:12px;padding-right:40px;">
       <div id="bv-nav-links" class="bv-nav-links font-heading">
         ${navLinksHtml}
       </div>
