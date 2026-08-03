@@ -153,6 +153,12 @@ export default async function handler(req, res) {
     /* Inject our header after <body> */
     html = html.replace(/<body([^>]*)>/, '<body$1>' + buildHeader());
 
+    /* For get-started page, inject Google Map embed */
+    if (slug === 'get-started') {
+      const mapEmbed = `<div style="width:100%;height:400px;"><iframe src="https://maps.google.com/maps?q=Brainvoice.ai+Ascendas+International+Tech+Park+Chennai+Tamil+Nadu+600013&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>`;
+      html = html.replace(/(<div[^>]*id="PAGES_CONTAINER"[^>]*>)/i, '$1' + mapEmbed);
+    }
+
     /* Replace navigation hrefs */
     const hrefPairs = [
       ['href="https://brainvoiceai.wixstudio.com/home/about"', 'href="/about"'],
