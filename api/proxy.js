@@ -9,11 +9,14 @@ const WIX_MAP = {
 const INJECT = `
 <style id="bv-custom-nav">
   @media (max-width: 980px) {
-    #PAGES_CONTAINER, #SITE_HEADER { display: none !important; }
+    #SITE_HEADER, [id*="PAGES_CONTAINER"], [data-testid*="menu"],
+    [data-testid*="hamburger"], [data-testid*="mobileMenu"] { display: none !important; }
     .bv-mobile-nav { display: flex !important; }
+    .bv-mobile-menu.is-open ~ #PAGES_CONTAINER,
+    .bv-mobile-menu.is-open ~ #site-root { pointer-events: none; }
   }
   @media (min-width: 981px) {
-    .bv-mobile-nav { display: none !important; }
+    .bv-mobile-nav, .bv-mobile-menu { display: none !important; }
   }
   .bv-mobile-nav {
     display: none;
@@ -35,9 +38,10 @@ const INJECT = `
     letter-spacing: 1px;
   }
   .bv-mobile-nav__brand span { color: #51C186; }
+  .bv-mobile-nav__right { display: flex; align-items: center; gap: 12px; }
   .bv-mobile-nav__hamburger {
     background: none; border: none; cursor: pointer;
-    width: 32px; height: 24px;
+    width: 28px; height: 20px;
     display: flex; flex-direction: column; justify-content: space-between;
     padding: 0;
   }
@@ -46,39 +50,41 @@ const INJECT = `
     background: linear-gradient(135deg, #13B0CB, #27B6B7, #39BA9F);
     border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
   }
-  .bv-mobile-nav__hamburger.is-open span:nth-child(1) { transform: translateY(10.5px) rotate(45deg); }
+  .bv-mobile-nav__hamburger.is-open span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
   .bv-mobile-nav__hamburger.is-open span:nth-child(2) { opacity: 0; }
-  .bv-mobile-nav__hamburger.is-open span:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
-  .bv-mobile-nav__menu {
+  .bv-mobile-nav__hamburger.is-open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+  .bv-mobile-menu {
     display: none;
     position: fixed;
-    top: 56px; left: 0; right: 0;
+    top: 52px; left: 0; right: 0; bottom: 0;
     background: #fff;
     padding: 1.5rem 1.25rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     z-index: 99998;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 0;
+    overflow-y: auto;
   }
-  .bv-mobile-nav__menu.is-open { display: flex; }
-  .bv-mobile-nav__menu a {
+  .bv-mobile-menu.is-open { display: flex; }
+  .bv-mobile-menu a {
     color: #000;
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
-    padding: 0.5rem 0;
+    padding: 0.85rem 0;
     border-bottom: 1px solid rgba(0,0,0,0.06);
   }
-  .bv-mobile-nav__menu a:last-child { border-bottom: none; }
-  .bv-mobile-nav__menu a:hover { color: #39BA9F; }
+  .bv-mobile-menu a:last-child { border-bottom: none; }
+  .bv-mobile-menu a:hover, .bv-mobile-menu a:active { color: #39BA9F; }
 </style>
-<div class="bv-mobile-nav" id="bvNav">
+<nav class="bv-mobile-nav" id="bvNav">
   <a href="/" class="bv-mobile-nav__brand">BRAINVOICE.<span>AI</span></a>
-  <button class="bv-mobile-nav__hamburger" id="bvHamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</div>
-<div class="bv-mobile-nav__menu" id="bvMenu">
+  <div class="bv-mobile-nav__right">
+    <button class="bv-mobile-nav__hamburger" id="bvHamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="bv-mobile-menu" id="bvMenu">
   <a href="/about">About Us</a>
   <a href="/blogs">Blogs</a>
   <a href="/careers">Careers</a>
