@@ -15,7 +15,7 @@ const HEADER_CSS = `
 
   .bv-header {
     position: relative; z-index: 50; width: 100%;
-    padding: 40px 40px 20px 40px;
+    padding: 40px 60px 20px 60px;
     background: rgba(255,255,255,0.95);
   }
   .bv-header-inner {
