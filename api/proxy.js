@@ -73,10 +73,7 @@ const HEADER_CSS = `
   /* Hamburger */
   .bv-hamburger {
     display: flex; background: none; border: none;
-    font-size: 1.8rem; cursor: pointer; padding: 5px;
-    background: linear-gradient(135deg, #13B0CB, #27B6B7, #39BA9F);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; transition: opacity 0.2s ease;
+    cursor: pointer; padding: 5px;
   }
   .bv-hamburger:hover { opacity: 0.8; }
   @media (min-width: 768px) { .bv-hamburger { display: none; } }
@@ -117,7 +114,12 @@ function buildHeader() {
         </a>
       </div>
       <button class="bv-hamburger" id="bv-menu-btn" aria-label="Menu">
-        <i class="fas fa-bars"></i>
+        <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect y="0" width="28" height="3" rx="1.5" fill="url(#grad)"/>
+          <rect y="8.5" width="28" height="3" rx="1.5" fill="url(#grad)"/>
+          <rect y="17" width="28" height="3" rx="1.5" fill="url(#grad)"/>
+          <defs><linearGradient id="grad" x1="0" y1="0" x2="28" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#13B0CB"/><stop offset="0.5" stop-color="#27B6B7"/><stop offset="1" stop-color="#39BA9F"/></linearGradient></defs>
+        </svg>
       </button>
     </div>
   </div>
