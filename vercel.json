@@ -8,11 +8,26 @@
     { "source": "/home.html", "destination": "/", "permanent": true }
   ],
   "rewrites": [
-    { "source": "/about", "destination": "/api/proxy?slug=about" },
-    { "source": "/blogs", "destination": "/api/proxy?slug=blogs" },
-    { "source": "/careers", "destination": "/api/proxy?slug=careers" },
-    { "source": "/success-stories", "destination": "/api/proxy?slug=success-stories" },
-    { "source": "/get-started", "destination": "/api/proxy?slug=get-started" }
+    {
+      "source": "/about",
+      "destination": "https://brainvoiceai.wixstudio.com/home/about"
+    },
+    {
+      "source": "/blogs",
+      "destination": "https://brainvoiceai.wixstudio.com/home/blogs"
+    },
+    {
+      "source": "/careers",
+      "destination": "https://brainvoiceai.wixstudio.com/home/careers"
+    },
+    {
+      "source": "/success-stories",
+      "destination": "https://brainvoiceai.wixstudio.com/home/success-stories"
+    },
+    {
+      "source": "/get-started",
+      "destination": "https://brainvoiceai.wixstudio.com/home/contact-us"
+    }
   ],
   "headers": [
     {
