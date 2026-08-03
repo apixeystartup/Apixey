@@ -12,8 +12,7 @@ const HEADER_CSS = `
   :root { --font-heading: 'teknolog', 'sans-serif'; }
   .font-heading { font-family: var(--font-heading); }
   .btn-text { font-size: 15px; font-weight: 500; letter-spacing: 0.5px; }
-  .bv-nav-spacer { height: 150px; width: 100%; }
-  .bv-header { position: fixed; top: 0; z-index: 50; width: 100%; padding-top: 12px; padding-bottom: 12px; background: white; }
+  .bv-header { position: fixed; top: 0; z-index: 50; width: 100%; padding-top: 150px; padding-bottom: 12px; background: white; }
   .bv-header-inner { padding-left: 1rem; padding-right: 1rem; position: relative; width: 100%; display: flex; align-items: center; justify-content: space-between; }
   @media (min-width: 768px) { .bv-header-inner { padding-left: 2rem; padding-right: 2rem; } }
   .bv-nav-links { display: none; flex-direction: row; align-items: center; gap: 0.75rem; }
@@ -54,7 +53,6 @@ function buildHeader(currentPage) {
   }).join('');
 
   return `<style>${HEADER_CSS}</style>
-<div class="bv-nav-spacer"></div>
 <header class="bv-header">
   <div class="bv-header-inner">
     <a href="/" rel="home" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;">
