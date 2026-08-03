@@ -18,17 +18,29 @@ export default async function handler(req, res) {
     const response = await fetch(wixUrl);
     let html = await response.text();
 
-    html = html.replace(/https?:\/\/brainvoiceai\.wixstudio\.com\/home\/about/g, '/about');
-    html = html.replace(/https?:\/\/brainvoiceai\.wixstudio\.com\/home\/blogs/g, '/blogs');
-    html = html.replace(/https?:\/\/brainvoiceai\.wixstudio\.com\/home\/careers/g, '/careers');
-    html = html.replace(/https?:\/\/brainvoiceai\.wixstudio\.com\/home\/success-stories/g, '/success-stories');
-    html = html.replace(/https?:\/\/brainvoiceai\.wixstudio\.com\/home\/contact-us/g, '/get-started');
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/about"/g, 'href="/about"');
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/blogs"/g, 'href="/blogs"');
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/careers"/g, 'href="/careers"');
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/success-stories"/g, 'href="/success-stories"');
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/contact-us"/g, 'href="/get-started"');
 
-    html = html.replace(/\/home\/about/g, '/about');
-    html = html.replace(/\/home\/blogs/g, '/blogs');
-    html = html.replace(/\/home\/careers/g, '/careers');
-    html = html.replace(/\/home\/success-stories/g, '/success-stories');
-    html = html.replace(/\/home\/contact-us/g, '/get-started');
+    html = html.replace(/href="\/home\/about"/g, 'href="/about"');
+    html = html.replace(/href="\/home\/blogs"/g, 'href="/blogs"');
+    html = html.replace(/href="\/home\/careers"/g, 'href="/careers"');
+    html = html.replace(/href="\/home\/success-stories"/g, 'href="/success-stories"');
+    html = html.replace(/href="\/home\/contact-us"/g, 'href="/get-started"');
+
+    html = html.replace(/href='\/home\/about'/g, "href='/about'");
+    html = html.replace(/href='\/home\/blogs'/g, "href='/blogs'");
+    html = html.replace(/href='\/home\/careers'/g, "href='/careers'");
+    html = html.replace(/href='\/home\/success-stories'/g, "href='/success-stories'");
+    html = html.replace(/href='\/home\/contact-us'/g, "href='/get-started'");
+
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/about\/"/g, 'href="/about/"');
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/blogs\/"/g, 'href="/blogs/"');
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/careers\/"/g, 'href="/careers/"');
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/success-stories\/"/g, 'href="/success-stories/"');
+    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/contact-us\/"/g, 'href="/get-started/"');
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.status(response.status).send(html);
