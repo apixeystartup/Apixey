@@ -83,7 +83,7 @@ const HEADER_CSS = `
 
   /* Hide Wix "Built on" banner only */
   #wmbr-base, [id*="wmbr"], [class*="wmbr"],
-  [data-testid="siteRoot"][style*="bottom"] { display: none !important; }
+  #SITE_HEADER, #SITE_HEADER_WRAPPER, #SITE_HEADER-placeholder { display: none !important; }
 `;
 
 function buildHeader() {
@@ -149,12 +149,6 @@ export default async function handler(req, res) {
       headers: { 'User-Agent': 'Mozilla/5.0' }
     });
     let html = await response.text();
-
-    /* Remove Wix header */
-    html = html.replace(/<header[\s\S]*?<\/header>/i, '');
-
-    /* Remove Wix "Built on" banner */
-    html = html.replace(/<div[^>]*id="SITE_HEADER"[^>]*>[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/i, '');
 
     /* Inject our header after <body> */
     html = html.replace(/<body([^>]*)>/, '<body$1>' + buildHeader());
