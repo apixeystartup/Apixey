@@ -79,6 +79,8 @@ const HEADER_CSS = `
   @media (min-width: 768px) { .bv-hamburger { display: none; } }
   @media (min-width: 768px) { .bv-logo { padding-left: 40px; } }
   @media (min-width: 768px) { .bv-right-nav { padding-right: 40px; } }
+  .bv-logo { padding-left: 5px; }
+  .bv-right-nav { padding-right: 5px; }
 
   /* Hide Wix header and banner */
   #SITE_HEADER, #SITE_HEADER_WRAPPER, #SITE_HEADER-placeholder,
