@@ -81,10 +81,9 @@ const HEADER_CSS = `
   .bv-hamburger:hover { opacity: 0.8; }
   @media (min-width: 768px) { .bv-hamburger { display: none; } }
 
-  /* Hide Wix "Built on" banner */
-  [id*="wmbr"], [id*="Wix"], [class*="wmbr"],
-  div[style*="position: fixed"][style*="bottom"],
-  a[href*="wixstudio"] { display: none !important; }
+  /* Hide Wix "Built on" banner only */
+  #wmbr-base, [id*="wmbr"], [class*="wmbr"],
+  [data-testid="siteRoot"][style*="bottom"] { display: none !important; }
 `;
 
 function buildHeader() {
@@ -132,9 +131,9 @@ function buildHeader() {
     nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('active');});});
     document.addEventListener('click',function(e){if(nav.classList.contains('active')&&!nav.contains(e.target)&&!btn.contains(e.target)){nav.classList.remove('active');}});
   }
-  /* Remove Wix "Built on" banner */
+  /* Remove Wix "Built on" banner only */
   setInterval(function(){
-    document.querySelectorAll('[id*="wmbr"],[id*="WixBadge"],[class*="wmbr"],a[href*="wixstudio"]').forEach(function(el){el.remove();});
+    document.querySelectorAll('#wmbr-base,[id*="wmbr"],[class*="wmbr"]').forEach(function(el){el.remove();});
   },500);
 })();
 </script>`;
