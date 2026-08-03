@@ -12,7 +12,7 @@ const HEADER_CSS = `
   :root { --font-heading: 'teknolog', 'sans-serif'; }
   .font-heading { font-family: var(--font-heading); }
   .btn-text { font-size: 15px; font-weight: 500; letter-spacing: 0.5px; }
-  .bv-nav-spacer { height: 50px; width: 100%; }
+  .bv-nav-spacer { height: 150px; width: 100%; }
   .bv-header { position: fixed; top: 0; z-index: 50; width: 100%; padding-top: 12px; padding-bottom: 12px; background: white; }
   .bv-header-inner { padding-left: 1rem; padding-right: 1rem; position: relative; width: 100%; display: flex; align-items: center; justify-content: space-between; }
   @media (min-width: 768px) { .bv-header-inner { padding-left: 2rem; padding-right: 2rem; } }
