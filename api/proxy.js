@@ -21,7 +21,7 @@ const HEADER_CSS = `
   }
   .bv-header-inner {
     position: relative; width: 100%;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center; justify-content: flex-start;
     padding-inline: 16px;
   }
   @media (min-width: 64rem) {
