@@ -36,14 +36,18 @@ export default async function handler(req, res) {
     html = html.replace(/href='\/home\/success-stories'/g, "href='/success-stories'");
     html = html.replace(/href='\/home\/contact-us'/g, "href='/get-started'");
 
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/about\/"/g, 'href="/about/"');
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/blogs\/"/g, 'href="/blogs/"');
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/careers\/"/g, 'href="/careers/"');
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/success-stories\/"/g, 'href="/success-stories/"');
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/contact-us\/"/g, 'href="/get-started/"');
+    const skipHeaders = new Set([
+      'content-length', 'content-encoding', 'transfer-encoding', 'connection'
+    ]);
+
+    response.headers.forEach((value, key) => {
+      if (!skipHeaders.has(key.toLowerCase())) {
+        res.setHeader(key, value);
+      }
+    });
 
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.status(response.status).send(html);
+    res.status(200).send(html);
   } catch (err) {
     res.status(502).send('Failed to fetch page');
   }
