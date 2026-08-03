@@ -80,6 +80,11 @@ const HEADER_CSS = `
   }
   .bv-hamburger:hover { opacity: 0.8; }
   @media (min-width: 768px) { .bv-hamburger { display: none; } }
+
+  /* Hide Wix "Built on" banner */
+  [id*="wmbr"], [id*="Wix"], [class*="wmbr"],
+  div[style*="position: fixed"][style*="bottom"],
+  a[href*="wixstudio"] { display: none !important; }
 `;
 
 function buildHeader() {
@@ -127,6 +132,10 @@ function buildHeader() {
     nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('active');});});
     document.addEventListener('click',function(e){if(nav.classList.contains('active')&&!nav.contains(e.target)&&!btn.contains(e.target)){nav.classList.remove('active');}});
   }
+  /* Remove Wix "Built on" banner */
+  setInterval(function(){
+    document.querySelectorAll('[id*="wmbr"],[id*="WixBadge"],[class*="wmbr"],a[href*="wixstudio"]').forEach(function(el){el.remove();});
+  },500);
 })();
 </script>`;
 }
@@ -144,6 +153,9 @@ export default async function handler(req, res) {
 
     /* Remove Wix header */
     html = html.replace(/<header[\s\S]*?<\/header>/i, '');
+
+    /* Remove Wix "Built on" banner */
+    html = html.replace(/<div[^>]*id="SITE_HEADER"[^>]*>[\s\S]*?<\/div>\s*<\/div>\s*<\/div>/i, '');
 
     /* Inject our header after <body> */
     html = html.replace(/<body([^>]*)>/, '<body$1>' + buildHeader());
