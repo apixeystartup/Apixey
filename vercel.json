@@ -28,14 +28,5 @@
       "source": "/get-started",
       "destination": "https://brainvoiceai.wixstudio.com/home/contact-us"
     }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
-      ]
-    }
   ]
 }
