@@ -12,7 +12,7 @@ const HEADER_CSS = `
   :root { --font-heading: 'teknolog', 'sans-serif'; }
   .font-heading { font-family: var(--font-heading); }
   .btn-text { font-size: 15px; font-weight: 500; letter-spacing: 0.5px; }
-  .bv-header { position: fixed; top: 0; z-index: 50; width: 100%; padding-top: 150px; padding-bottom: 12px; background: white; }
+  .bv-header { position: fixed; top: 0; z-index: 50; width: 100%; padding-top: 25px; padding-bottom: 12px; background: white; }
   .bv-header-inner { padding-left: 1rem; padding-right: 1rem; position: relative; width: 100%; display: flex; align-items: center; justify-content: space-between; }
   @media (min-width: 768px) { .bv-header-inner { padding-left: 2rem; padding-right: 2rem; } }
   .bv-nav-links { display: none; flex-direction: row; align-items: center; gap: 0.75rem; }
@@ -59,7 +59,7 @@ function buildHeader(currentPage) {
       <span style="font-size:30px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
     </a>
     <div style="display:flex;flex-direction:row;align-items:center;gap:0.75rem;">
-      <div id="bv-nav-links" class="bv-nav-links font-heading" style="display:none;flex-direction:row;align-items:center;gap:0.75rem;">
+      <div id="bv-nav-links" class="bv-nav-links font-heading">
         ${navLinksHtml}
       </div>
       <div class="bv-desktop-cta">
