@@ -22,7 +22,7 @@ const HEADER_CSS = `
   .bv-header-inner {
     position: relative; width: 100%;
     display: flex; align-items: center; justify-content: space-between;
-    padding-inline: 25px;
+    padding-inline: 5px;
   }
 
   /* Desktop nav */
