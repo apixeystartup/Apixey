@@ -6,6 +6,29 @@ const WIX_MAP = {
   'get-started': 'https://brainvoiceai.wixstudio.com/home/contact-us',
 };
 
+const URL_MAP = {
+  'brainvoiceai.wixstudio.com/home/about': '/about',
+  'brainvoiceai.wixstudio.com/home/blogs': '/blogs',
+  'brainvoiceai.wixstudio.com/home/careers': '/careers',
+  'brainvoiceai.wixstudio.com/home/success-stories': '/success-stories',
+  'brainvoiceai.wixstudio.com/home/contact-us': '/get-started',
+};
+
+const NAV_SCRIPT = `<script>
+(function(){
+  var map=${JSON.stringify(URL_MAP)};
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('a');
+    if(!a)return;
+    var h=a.getAttribute('href');
+    if(!h)return;
+    for(var k in map){
+      if(h.indexOf(k)!==-1){e.preventDefault();window.location.href=map[k];return;}
+    }
+  });
+})();
+</script>`;
+
 export default async function handler(req, res) {
   const slug = req.query.slug;
   const wixUrl = WIX_MAP[slug];
@@ -18,23 +41,7 @@ export default async function handler(req, res) {
     const response = await fetch(wixUrl);
     let html = await response.text();
 
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/about"/g, 'href="/about"');
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/blogs"/g, 'href="/blogs"');
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/careers"/g, 'href="/careers"');
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/success-stories"/g, 'href="/success-stories"');
-    html = html.replace(/href="https?:\/\/brainvoiceai\.wixstudio\.com\/home\/contact-us"/g, 'href="/get-started"');
-
-    html = html.replace(/href="\/home\/about"/g, 'href="/about"');
-    html = html.replace(/href="\/home\/blogs"/g, 'href="/blogs"');
-    html = html.replace(/href="\/home\/careers"/g, 'href="/careers"');
-    html = html.replace(/href="\/home\/success-stories"/g, 'href="/success-stories"');
-    html = html.replace(/href="\/home\/contact-us"/g, 'href="/get-started"');
-
-    html = html.replace(/href='\/home\/about'/g, "href='/about'");
-    html = html.replace(/href='\/home\/blogs'/g, "href='/blogs'");
-    html = html.replace(/href='\/home\/careers'/g, "href='/careers'");
-    html = html.replace(/href='\/home\/success-stories'/g, "href='/success-stories'");
-    html = html.replace(/href='\/home\/contact-us'/g, "href='/get-started'");
+    html = html.replace(/<\/body>/i, NAV_SCRIPT + '</body>');
 
     const skipHeaders = new Set([
       'content-length', 'content-encoding', 'transfer-encoding', 'connection'
