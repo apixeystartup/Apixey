@@ -15,12 +15,17 @@ const HEADER_CSS = `
 
   .bv-header {
     position: relative; z-index: 50; width: 100%;
-    padding: 40px 60px 20px 60px;
+    padding: 40px 0 20px 0 !important;
     background: rgba(255,255,255,0.95);
+    box-sizing: border-box;
   }
   .bv-header-inner {
     position: relative; width: 100%;
     display: flex; align-items: center; justify-content: space-between;
+    padding-inline: 16px;
+  }
+  @media (min-width: 64rem) {
+    .bv-header-inner { padding-inline: 32px; }
   }
 
   /* Desktop nav */
