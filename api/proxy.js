@@ -17,7 +17,7 @@ function buildInjectionScript() {
 
   const navLinksHtml = links.map((l, i) => {
     const sep = i < links.length - 1 ? '<span class="font-heading bv-sep">/</span>' : '';
-    return '<a href="/' + l.slug + '" class="bv-nav-link font-heading"><div class="btn-text">' + l.label + '</div></a>' + sep;
+    return '<a href="https://brainvoiceai.wixstudio.com/home/' + l.slug + '" class="bv-nav-link font-heading"><div class="btn-text">' + l.label + '</div></a>' + sep;
   }).join('');
 
   return `<script>
@@ -73,7 +73,7 @@ function buildInjectionScript() {
           '${navLinksHtml}'+
         '</div>'+
         '<div class="bv-desktop-cta">'+
-          '<a href="/get-started" class="bv-cta-btn font-heading">'+
+          '<a href="https://brainvoiceai.wixstudio.com/home/contact-us" class="bv-cta-btn font-heading">'+
             '<svg viewBox="0 0 34 209" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.2653e-05 33.9999L0 208.5L34 208.5L34.0001 -0.000108298L6.2653e-05 33.9999Z" class="fill-brown"/></svg>'+
             '<div class="btn-text-cta">Get started</div>'+
             '<svg viewBox="0 0 34 209" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M33.9999 174.5L34 0L-7.62939e-06 -1.48619e-06L-8.54078e-05 208.5L33.9999 174.5Z" class="fill-brown"/></svg>'+
@@ -129,24 +129,6 @@ export default async function handler(req, res) {
 
     /* Inject script before </body> */
     html = html.replace(/<\/body>/i, buildInjectionScript() + '</body>');
-
-    /* For get-started page, inject Google Map embed above footer */
-    if (slug === 'get-started') {
-      const mapEmbed = '<div style="width:100%;height:450px;"><iframe src="https://maps.google.com/maps?q=Brainvoice.ai+Ascendas+International+Tech+Park+Chennai+Tamil+Nadu+600013&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>';
-      html = html.replace(/(<div[^>]*id="SITE_FOOTER_WRAPPER")/i, mapEmbed + '$1');
-    }
-
-    /* Replace navigation hrefs */
-    const hrefPairs = [
-      ['href="https://brainvoiceai.wixstudio.com/home/about"', 'href="/about"'],
-      ['href="https://brainvoiceai.wixstudio.com/home/blogs"', 'href="/blogs"'],
-      ['href="https://brainvoiceai.wixstudio.com/home/careers"', 'href="/careers"'],
-      ['href="https://brainvoiceai.wixstudio.com/home/success-stories"', 'href="/success-stories"'],
-      ['href="https://brainvoiceai.wixstudio.com/home/contact-us"', 'href="/get-started"'],
-    ];
-    for (const [from, to] of hrefPairs) {
-      while (html.includes(from)) html = html.replace(from, to);
-    }
 
     const skip = new Set(['content-length', 'content-encoding', 'transfer-encoding', 'connection']);
     response.headers.forEach((value, key) => {
