@@ -76,8 +76,8 @@ const HEADER_CSS = `
   @media (min-width: 768px) { .bv-logo { padding-left: 40px; } }
   @media (min-width: 768px) { .bv-right-nav { padding-right: 40px; } }
 
-  #SITE_HEADER, #SITE_HEADER_WRAPPER, #SITE_HEADER-placeholder,
-  #wmbr-base, [id*="wmbr"], [class*="wmbr"] { display: none !important; }
+  #SITE_HEADER, #SITE_HEADER-wrapper,
+  #wmbr-base, [id*="wmbr"], [class*="wmbr"] { visibility: hidden !important; height: 0 !important; overflow: hidden !important; margin: 0 !important; padding: 0 !important; }
 `;
 
 function buildHeader() {
