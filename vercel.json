@@ -3,8 +3,19 @@
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/wp-content/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ],
   "redirects": [
     { "source": "/home", "destination": "/", "permanent": true },
     { "source": "/home.html", "destination": "/", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/((?!api|wp-content|index.html|static|css|js|assets|fonts|images|includes).*)", "destination": "/api/proxy?slug=$1" }
   ]
 }
