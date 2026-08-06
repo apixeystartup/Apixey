@@ -400,7 +400,7 @@ function buildMapSection() {
   `;
 }
 
-function buildIframePage() {
+function buildIframePage(slug) {
   const links = [
     { slug: 'about', label: 'About Us' },
     { slug: 'blogs', label: 'Blogs' },
@@ -417,15 +417,32 @@ function buildIframePage() {
     return '<a href="/' + l.slug + '" class="bv-nav-link' + hideClass + '"><div class="btn-text">' + l.label + '</div></a>' + sep;
   }).join('');
 
+  const wixUrl = WIX_MAP[slug];
+  const pageTitle = slug === 'about' ? 'About Us' : 'Get Started';
+
   const address = 'Brainvoice.ai, Ascendas, International Tech Park, Bridge+, Chennai, Tamil Nadu 600013';
   const encodedAddress = encodeURIComponent(address);
+
+  const mapSection = slug === 'get-started' ? `
+  <div id="bv-map-section">
+    <h2>Find Us</h2>
+    <div class="map-container">
+      <iframe 
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodedAddress}&zoom=15"
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <p class="map-address">${address}</p>
+  </div>` : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Get Started - Brainvoice AI</title>
+  <title>${pageTitle} - Brainvoice AI</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     @font-face{font-family:"ki";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/ki.woff?v=2")}
@@ -522,20 +539,9 @@ function buildIframePage() {
     </div>
   </header>
 
-  <iframe id="wix-frame" src="https://brainvoiceai.wixstudio.com/home/contact-us"></iframe>
+  <iframe id="wix-frame" src="${wixUrl}"></iframe>
 
-  <div id="bv-map-section">
-    <h2>Find Us</h2>
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodedAddress}&zoom=15"
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-    <p class="map-address">${address}</p>
-  </div>
+  ${mapSection}
 
   <footer id="bv-footer" class="bv-site-footer">
     <svg class="bv-site-footer__shape" viewBox="0 0 1316 71" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -668,8 +674,8 @@ export default async function handler(req, res) {
     });
     let html = await response.text();
 
-    if (slug === 'get-started') {
-      const iframePage = buildIframePage();
+    if (slug === 'get-started' || slug === 'about') {
+      const iframePage = buildIframePage(slug);
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       res.setHeader('Pragma', 'no-cache');
       res.setHeader('Expires', '0');
