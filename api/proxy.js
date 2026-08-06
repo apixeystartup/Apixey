@@ -666,7 +666,18 @@ function buildIframePage(slug) {
     }
 
     var frame=document.getElementById('wix-frame');
-    if(frame){
+    var wrap=document.getElementById('wix-wrap');
+    if(frame&&wrap){
+      /* On iframe load, resize wrapper to match actual content height */
+      frame.addEventListener('load',function(){
+        try{
+          var doc=frame.contentWindow.document.documentElement;
+          var h=doc.scrollHeight;
+          if(h>100){wrap.style.height=h+'px';}
+        }catch(ex){}
+      });
+
+      /* Sync parent scroll to iframe scroll */
       var syncing=false;
       window.addEventListener('scroll',function(){
         if(syncing)return;
