@@ -8272,17 +8272,7 @@
   // js/utils/smoothScroll.js
   gsapWithCSS.registerPlugin(ScrollTrigger2);
   function initSmoothScroll() {
-    const lenis = new Lenis({
-      smoothWheel: true,
-      overscroll: false,
-      duration: 0.6
-    });
-    window.lenis = lenis;
-    lenis.on("scroll", ScrollTrigger2.update);
-    gsapWithCSS.ticker.add((time) => {
-      lenis.raf(time * 1e3);
-    });
-    gsapWithCSS.ticker.lagSmoothing(0);
+    window.addEventListener("scroll", () => ScrollTrigger2.update(), { passive: true });
   }
 
   // js/components/accordions.js
