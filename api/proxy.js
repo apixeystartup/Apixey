@@ -290,7 +290,7 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
       var lastY=0;
       window.addEventListener('scroll',function(){
         var curY=window.pageYOffset||document.documentElement.scrollTop;
-        if(curY>lastY&&curY>60){hdr.style.transform='translateY(-100%)';hdr.style.transition='transform 0.3s ease';}
+        if(curY>lastY&&curY>30){hdr.style.transform='translateY(-100%)';hdr.style.transition='transform 0.3s ease';}
         else{hdr.style.transform='translateY(0)';hdr.style.transition='transform 0.3s ease';}
         lastY=curY;
       });
@@ -502,11 +502,10 @@ function buildIframePage(slug) {
     .footer-legal__credit a{color:#315e60;text-decoration:none;}
     @media(min-width:1024px){.bv-site-footer__grid{display:grid;grid-template-columns:minmax(200px,1.35fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.8fr) minmax(160px,1fr);align-items:start;gap:1.25rem 1rem;}.bv-site-footer__col--explore{display:none;}.footer-resources-form-row{display:contents;}.bv-site-footer__brand{flex:unset;max-width:none;}.bv-site-footer__col{flex:unset;min-width:0;padding-top:0.5rem;}.footer-col-resources,.footer-col-get-started{flex:unset;max-width:none;}.bv-site-footer__heading{font-size:1.05rem;position:relative;padding-bottom:0.5rem;}.bv-site-footer__heading::after{content:"";display:block;width:2.5rem;height:3px;margin-top:0.35rem;background:#13b0cb;}.bv-site-footer__links a{font-size:0.72rem;white-space:normal;line-height:1.35;}.footer-legal{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;}.footer-legal__links{margin-top:0}}
 
-    /* Iframe container clips Wix banner, hides iframe scrollbar */
-    #wix-wrap{overflow:hidden;position:relative;height:calc(100vh - 100px);}
+    /* Iframe container clips Wix banner, no iframe scrollbar */
+    #wix-wrap{overflow:hidden;position:relative;height:75vh;}
     #wix-frame{width:100%;height:calc(100% + 50px);border:none;display:block;position:absolute;top:-50px;left:0;scrollbar-width:none;-ms-overflow-style:none;}
     #wix-frame::-webkit-scrollbar{display:none;}
-    body{overflow-y:auto;}
   </style>
 </head>
 <body>
@@ -538,7 +537,7 @@ function buildIframePage(slug) {
     </div>
   </header>
 
-  <div id="wix-wrap"><iframe id="wix-frame" src="${wixUrl}"></iframe></div>
+  <div id="wix-wrap"><iframe id="wix-frame" src="${wixUrl}" scrolling="no"></iframe></div>
 
   <footer id="bv-footer" class="bv-site-footer">
     <svg class="bv-site-footer__shape" viewBox="0 0 1316 71" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -661,10 +660,23 @@ function buildIframePage(slug) {
       var lastY=0;
       window.addEventListener('scroll',function(){
         var curY=window.pageYOffset||document.documentElement.scrollTop;
-        if(curY>lastY&&curY>60){hdr.style.transform='translateY(-100%)';hdr.style.transition='transform 0.3s ease';}
+        if(curY>lastY&&curY>30){hdr.style.transform='translateY(-100%)';hdr.style.transition='transform 0.3s ease';}
         else{hdr.style.transform='translateY(0)';hdr.style.transition='transform 0.3s ease';}
         lastY=curY;
       });
+    }
+
+    var frame=document.getElementById('wix-frame');
+    if(frame){
+      document.addEventListener('wheel',function(e){
+        try{
+          var win=frame.contentWindow;
+          var maxScroll=win.document.documentElement.scrollHeight-win.innerHeight;
+          var cur=win.pageYOffset||win.document.documentElement.scrollTop||0;
+          var next=Math.max(0,Math.min(maxScroll,cur+e.deltaY));
+          win.scrollTo(0,next);
+        }catch(ex){}
+      },{passive:true});
     }
   </script>
 </body>
