@@ -418,7 +418,7 @@ function buildIframePage(slug) {
   }).join('');
 
   const wixUrl = WIX_MAP[slug];
-  const pageTitle = slug === 'about' ? 'About Us' : 'Get Started';
+  const pageTitle = slug === 'about' ? 'About Us' : slug === 'careers' ? 'Careers' : 'Get Started';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -658,7 +658,7 @@ export default async function handler(req, res) {
     });
     let html = await response.text();
 
-    if (slug === 'about' || slug === 'get-started') {
+    if (slug === 'about' || slug === 'get-started' || slug === 'careers') {
       const iframePage = buildIframePage(slug);
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       res.setHeader('Pragma', 'no-cache');
