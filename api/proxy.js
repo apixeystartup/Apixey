@@ -12,7 +12,7 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
     { slug: 'blogs', label: 'Blogs' },
     { slug: 'careers', label: 'Careers' },
     { slug: 'success-stories', label: 'Success Stories' },
-    { slug: 'contact-us', label: 'Get Started', hideDesktop: true },
+    { slug: 'get-started', label: 'Get Started', hideDesktop: true },
   ];
 
   const navLinksHtml = links.map((l, i) => {
@@ -657,16 +657,11 @@ export default async function handler(req, res) {
 
   try {
     if (slug === 'about' || slug === 'get-started' || slug === 'careers') {
-      const response2 = await fetch(wixUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
-      let wixHtml = await response2.text();
-      wixHtml = wixHtml.replace(/<head([^>]*)>/i, '<head$1><base href="https://brainvoiceai.wixstudio.com/home/">');
-      wixHtml = wixHtml.replace(/<\/body>/i, buildInjectionScript(null, null) + '</body>');
-      const skip2 = new Set(['content-length', 'content-encoding', 'transfer-encoding', 'connection']);
-      response2.headers.forEach((value, key) => { if (!skip2.has(key.toLowerCase())) res.setHeader(key, value); });
+      const iframePage = buildIframePage(slug);
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       res.setHeader('Pragma', 'no-cache');
       res.setHeader('Expires', '0');
-      res.status(200).send(wixHtml);
+      res.status(200).send(iframePage);
       return;
     }
 
