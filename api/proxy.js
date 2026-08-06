@@ -12,12 +12,15 @@ function buildInjectionScript() {
     { slug: 'blogs', label: 'Blogs' },
     { slug: 'careers', label: 'Careers' },
     { slug: 'success-stories', label: 'Success Stories' },
+    { slug: 'contact-us', label: 'Get Started', hideDesktop: true },
   ];
 
   const navLinksHtml = links.map((l, i) => {
     const isLast = i === links.length - 1;
-    const sep = isLast ? '' : '<span class="bv-sep">/</span>';
-    return '<a href="/' + l.slug + '" class="bv-nav-link"><div class="btn-text">' + l.label + '</div></a>' + sep;
+    const hideClass = l.hideDesktop ? ' bv-hide-desktop' : '';
+    const nextIsHidden = !isLast && links[i+1].hideDesktop;
+    const sep = (isLast || nextIsHidden) ? '' : '<span class="bv-sep">/</span>';
+    return '<a href="/' + l.slug + '" class="bv-nav-link' + hideClass + '"><div class="btn-text">' + l.label + '</div></a>' + sep;
   }).join('');
 
   const footerB64 = Buffer.from(`
@@ -148,6 +151,8 @@ function buildInjectionScript() {
     '.bv-nav-link:hover{color:#0f766e}',
     '.bv-nav-link .btn-text{font-size:15px;font-weight:500;letter-spacing:0.5px}',
     '.bv-sep{font-family:teknolog,sans-serif;color:black}',
+    '.bv-hide-desktop{display:none}',
+    '@media(max-width:767px){.bv-hide-desktop{display:flex!important}}',
     '.bv-desktop-cta{display:none}',
     '@media(min-width:768px){.bv-desktop-cta{display:flex}}',
     '.bv-cta-btn{height:44px;display:flex;align-items:stretch;text-decoration:none;margin-left:20px;transition:transform 0.2s ease,box-shadow 0.2s ease}',
