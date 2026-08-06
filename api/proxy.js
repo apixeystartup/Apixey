@@ -18,8 +18,10 @@ function buildInjectionScript(slug) {
   ];
 
   const navLinksHtml = links.map((l, i) => {
-    const sep = i < links.length - 1 ? '<span class="font-heading bv-sep">/</span>' : '';
+    const isLast = i === links.length - 1;
     const hideOnDesktop = l.slug === 'contact-us' ? ' bv-hide-desktop' : '';
+    const nextIsHidden = !isLast && links[i+1].slug === 'contact-us';
+    const sep = (isLast || nextIsHidden) ? '' : '<span class="font-heading bv-sep">/</span>';
     return '<a href="/' + l.slug + '" class="bv-nav-link font-heading' + hideOnDesktop + '"><div class="btn-text">' + l.label + '</div></a>' + sep;
   }).join('');
 
