@@ -19,7 +19,8 @@ function buildInjectionScript(slug) {
 
   const navLinksHtml = links.map((l, i) => {
     const sep = i < links.length - 1 ? '<span class="font-heading bv-sep">/</span>' : '';
-    return '<a href="/' + l.slug + '" class="bv-nav-link font-heading"><div class="btn-text">' + l.label + '</div></a>' + sep;
+    const hideOnDesktop = l.slug === 'contact-us' ? ' bv-hide-desktop' : '';
+    return '<a href="/' + l.slug + '" class="bv-nav-link font-heading' + hideOnDesktop + '"><div class="btn-text">' + l.label + '</div></a>' + sep;
   }).join('');
 
   const footerHtml = `
@@ -214,6 +215,8 @@ function buildInjectionScript(slug) {
     '.bv-nav-link:hover{color:var(--color-brown)}',
     '.bv-nav-link .btn-text{font-size:15px;font-weight:500;letter-spacing:0.5px}',
     '.bv-sep{font-family:var(--font-heading);color:black}',
+    '.bv-hide-desktop{display:none}',
+    '@media(max-width:767px){.bv-hide-desktop{display:flex!important}}',
     '.bv-desktop-cta{display:none}',
     '@media(min-width:768px){.bv-desktop-cta{display:flex}}',
     '.bv-cta-btn{height:44px;display:flex;align-items:stretch;text-decoration:none;margin-left:20px;transition:transform 0.2s ease,box-shadow 0.2s ease}',
