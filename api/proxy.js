@@ -503,7 +503,7 @@ function buildIframePage(slug) {
     @media(min-width:1024px){.bv-site-footer__grid{display:grid;grid-template-columns:minmax(200px,1.35fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.8fr) minmax(160px,1fr);align-items:start;gap:1.25rem 1rem;}.bv-site-footer__col--explore{display:none;}.footer-resources-form-row{display:contents;}.bv-site-footer__brand{flex:unset;max-width:none;}.bv-site-footer__col{flex:unset;min-width:0;padding-top:0.5rem;}.footer-col-resources,.footer-col-get-started{flex:unset;max-width:none;}.bv-site-footer__heading{font-size:1.05rem;position:relative;padding-bottom:0.5rem;}.bv-site-footer__heading::after{content:"";display:block;width:2.5rem;height:3px;margin-top:0.35rem;background:#13b0cb;}.bv-site-footer__links a{font-size:0.72rem;white-space:normal;line-height:1.35;}.footer-legal{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;}.footer-legal__links{margin-top:0}}
 
     /* Iframe container clips Wix banner, no iframe scrollbar */
-    #wix-wrap{overflow:hidden;position:relative;height:75vh;}
+    #wix-wrap{overflow:hidden;position:relative;height:4000px;}
     #wix-frame{width:100%;height:calc(100% + 50px);border:none;display:block;position:absolute;top:-50px;left:0;scrollbar-width:none;-ms-overflow-style:none;}
     #wix-frame::-webkit-scrollbar{display:none;}
   </style>
