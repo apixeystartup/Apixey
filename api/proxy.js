@@ -145,7 +145,7 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
     '#WIX_ADS{display:none!important}',
     ':root{--wix-ads-height:0px!important}',
     '#SITE_HEADER,#SITE_HEADER-wrapper,#SITE_HEADER-placeholder{visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}',
-    '#bv-header{position:relative;z-index:50;width:100%;padding:40px 0 20px 0;background:rgba(255,255,255,0.95);box-sizing:border-box}',
+    '#bv-header{width:100%;padding:16px 0 10px 0;background:rgba(255,255,255,0.95);box-sizing:border-box}',
     '#bv-header *{font-family:ki,sans-serif!important}',
     '#bv-header .bv-nav-link .btn-text,#bv-header .bv-sep,#bv-header .btn-text-cta{font-family:teknolog,sans-serif!important}',
     '.bv-header-inner{position:relative;width:100%;display:flex;align-items:center;justify-content:space-between;padding-inline:0}',
@@ -162,9 +162,9 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
     '@media(max-width:767px){.bv-hide-desktop{display:flex!important}}',
     '.bv-desktop-cta{display:none}',
     '@media(min-width:768px){.bv-desktop-cta{display:flex}}',
-    '.bv-cta-btn{height:44px;display:flex;align-items:stretch;text-decoration:none;margin-left:20px;transition:transform 0.2s ease,box-shadow 0.2s ease}',
+    '.bv-cta-btn{height:36px;display:flex;align-items:stretch;text-decoration:none;margin-left:20px;transition:transform 0.2s ease,box-shadow 0.2s ease}',
     '.bv-cta-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(15,118,110,0.3)}',
-    '.bv-cta-btn svg{height:44px;width:20px}',
+    '.bv-cta-btn svg{height:36px;width:18px}',
     '.bv-cta-btn .fill-brown{fill:#0f766e}',
     '.bv-cta-btn .btn-text-cta{padding:0 16px;background:#0f766e;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;font-weight:500;letter-spacing:0.5px;font-family:teknolog,sans-serif}',
     '.bv-hamburger{display:flex;background:none;border:none;cursor:pointer;padding:5px}',
@@ -223,7 +223,7 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
     hdr.id='bv-header';
     hdr.innerHTML='<div class="bv-header-inner">'+
       '<a href="https://brainvoice.ai" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">'+
-        '<span style="font-family:ki,sans-serif;font-size:30px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>'+
+        '<span style="font-family:ki,sans-serif;font-size:24px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>'+
       '</a>'+
       '<div style="display:flex;flex-direction:row;align-items:center;gap:16px;" class="bv-right-nav">'+
         '<div id="bv-nav-links" class="bv-nav-links">'+
@@ -437,7 +437,7 @@ function buildIframePage(slug) {
     body{font-family:ki,sans-serif;overflow-x:hidden;}
 
     /* Header - NOT fixed, scrolls with page */
-    #bv-header{width:100%;padding:40px 0 20px 0;background:rgba(255,255,255,0.95);box-sizing:border-box;}
+    #bv-header{width:100%;padding:16px 0 10px 0;background:rgba(255,255,255,0.95);box-sizing:border-box;}
     #bv-header *{font-family:ki,sans-serif!important;}
     #bv-header .bv-nav-link .btn-text,#bv-header .bv-sep,#bv-header .btn-text-cta{font-family:teknolog,sans-serif!important;}
     .bv-header-inner{position:relative;width:100%;display:flex;align-items:center;justify-content:space-between;padding-inline:0;}
@@ -451,9 +451,9 @@ function buildIframePage(slug) {
     @media(max-width:767px){.bv-hide-desktop{display:flex!important;}}
     .bv-desktop-cta{display:none;}
     @media(min-width:768px){.bv-desktop-cta{display:flex;}}
-    .bv-cta-btn{height:44px;display:flex;align-items:stretch;text-decoration:none;margin-left:20px;transition:transform 0.2s ease,box-shadow 0.2s ease;}
+    .bv-cta-btn{height:36px;display:flex;align-items:stretch;text-decoration:none;margin-left:20px;transition:transform 0.2s ease,box-shadow 0.2s ease;}
     .bv-cta-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(15,118,110,0.3);}
-    .bv-cta-btn svg{height:44px;width:20px;}
+    .bv-cta-btn svg{height:36px;width:18px;}
     .bv-cta-btn .fill-brown{fill:#0f766e;}
     .bv-cta-btn .btn-text-cta{padding:0 16px;background:#0f766e;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;font-weight:500;letter-spacing:0.5px;font-family:teknolog,sans-serif;}
     .bv-hamburger{display:flex;background:none;border:none;cursor:pointer;padding:5px;}
@@ -504,7 +504,7 @@ function buildIframePage(slug) {
   <header id="bv-header">
     <div class="bv-header-inner">
       <a href="https://brainvoice.ai" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">
-        <span style="font-family:ki,sans-serif;font-size:30px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
+        <span style="font-family:ki,sans-serif;font-size:24px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
       </a>
       <div style="display:flex;flex-direction:row;align-items:center;gap:16px;" class="bv-right-nav">
         <div id="bv-nav-links" class="bv-nav-links">
