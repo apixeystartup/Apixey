@@ -433,6 +433,11 @@ function buildIframePage(slug) {
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:ki,sans-serif;overflow-x:hidden;}
 
+    /* Built On banner - above header */
+    #bv-built-on{width:100%;background:#f5f5f5;text-align:center;padding:8px 0;font-size:12px;color:#666;font-family:ki,sans-serif;}
+    #bv-built-on a{color:#666;text-decoration:none;}
+    #bv-built-on a:hover{text-decoration:underline;}
+
     /* Header - NOT fixed, scrolls with page */
     #bv-header{width:100%;padding:40px 0 20px 0;background:rgba(255,255,255,0.95);box-sizing:border-box;}
     #bv-header *{font-family:ki,sans-serif!important;}
@@ -497,6 +502,7 @@ function buildIframePage(slug) {
   </style>
 </head>
 <body>
+  <div id="bv-built-on">Built on <a href="https://www.wix.com/" target="_blank" rel="noopener noreferrer">Wix</a> Studios</div>
   <header id="bv-header">
     <div class="bv-header-inner">
       <a href="https://brainvoice.ai" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">
