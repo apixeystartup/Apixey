@@ -307,7 +307,7 @@ function parseBlogPosts(html) {
                   title: post.title || '',
                   excerpt: post.excerpt || '',
                   slug: post.slug || '',
-                  url: post.url?.path ? `https://brainvoiceai.wixstudio.com${post.url.path}` : '',
+                  url: `https://brainvoiceai.wixstudio.com/home${post.url?.path || ''}`,
                   image: post.media?.wixMedia?.image?.url || post.heroImage?.url || '',
                   date: post.firstPublishedDate ? new Date(post.firstPublishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '',
                   minutesToRead: post.minutesToRead || 1,
