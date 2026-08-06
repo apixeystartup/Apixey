@@ -423,19 +423,7 @@ function buildIframePage(slug) {
   const address = 'Brainvoice.ai, Ascendas, International Tech Park, Bridge+, Chennai, Tamil Nadu 600013';
   const encodedAddress = encodeURIComponent(address);
 
-  const mapSection = slug === 'get-started' ? `
-  <div id="bv-map-section">
-    <h2>Find Us</h2>
-    <div class="map-container">
-      <iframe 
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodedAddress}&zoom=15"
-        allowfullscreen="" 
-        loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-    <p class="map-address">${address}</p>
-  </div>` : '';
+  const mapSection = '';
 
   return `<!DOCTYPE html>
 <html lang="en">
