@@ -343,8 +343,6 @@ function buildBlogSection(posts) {
 
   return `
     <div id="bv-blog-section" style="font-family:ki,sans-serif;max-width:1200px;margin:0 auto;padding:60px 20px;">
-      <h2 style="font-family:teknolog,sans-serif;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;text-transform:uppercase;text-align:center;margin-bottom:12px;color:#000;">Latest Blog Posts</h2>
-      <p style="text-align:center;color:#666;margin-bottom:40px;font-size:1rem;">Insights, trends, and updates from Brainvoice AI</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;">
         ${cards}
       </div>
