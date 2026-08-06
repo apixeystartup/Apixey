@@ -6,7 +6,7 @@ const WIX_MAP = {
   'get-started': 'https://brainvoiceai.wixstudio.com/home/contact-us',
 };
 
-function buildInjectionScript(blogSectionHtml) {
+function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
   const links = [
     { slug: 'about', label: 'About Us' },
     { slug: 'blogs', label: 'Blogs' },
@@ -131,6 +131,7 @@ function buildInjectionScript(blogSectionHtml) {
   `).toString('base64');
 
   const blogSectionB64 = blogSectionHtml ? Buffer.from(blogSectionHtml).toString('base64') : '';
+  const mapSectionB64 = mapSectionHtml ? Buffer.from(mapSectionHtml).toString('base64') : '';
 
   return `<script>
 (function(){
@@ -262,6 +263,18 @@ function buildInjectionScript(blogSectionHtml) {
       }
     }
 
+    var mapHtml='${mapSectionB64}';
+    if(mapHtml){
+      var mapDiv=document.createElement('div');
+      mapDiv.innerHTML=atob(mapHtml);
+      var footer=document.getElementById('bv-footer');
+      if(footer){
+        footer.parentNode.insertBefore(mapDiv,footer);
+      }else{
+        container.appendChild(mapDiv);
+      }
+    }
+
     var btn=document.getElementById('bv-menu-btn');
     var nav=document.getElementById('bv-nav-links');
     if(btn&&nav){
@@ -363,6 +376,30 @@ function buildBlogSection(posts) {
   `;
 }
 
+function buildMapSection() {
+  const address = 'Brainvoice.ai, Ascendas, International Tech Park, Bridge+, Chennai, Tamil Nadu 600013';
+  const encodedAddress = encodeURIComponent(address);
+  const mapEmbedUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.5!2d80.2!3d13.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDAwJzAwLjAiTiA4MMKwMTInMDAuMCJF!5e0!3m2!1sen!2sin!4v1`;
+  
+  return `
+    <div id="bv-map-section" style="font-family:ki,sans-serif;max-width:1200px;margin:0 auto;padding:0 20px 60px;">
+      <h2 style="font-family:teknolog,sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;text-transform:uppercase;text-align:center;margin-bottom:16px;color:#000;">Find Us</h2>
+      <div style="width:100%;height:400px;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.08);">
+        <iframe 
+          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${encodedAddress}&zoom=15"
+          width="100%" 
+          height="100%" 
+          style="border:0;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <p style="text-align:center;color:#666;margin-top:12px;font-size:0.9rem;">${address}</p>
+    </div>
+  `;
+}
+
 export default async function handler(req, res) {
   const slug = req.query.slug;
   const wixUrl = WIX_MAP[slug];
@@ -377,9 +414,12 @@ export default async function handler(req, res) {
     if (slug === 'blogs') {
       const posts = parseBlogPosts(html);
       const blogSection = buildBlogSection(posts);
-      html = html.replace(/<\/body>/i, buildInjectionScript(blogSection) + '</body>');
+      html = html.replace(/<\/body>/i, buildInjectionScript(blogSection, null) + '</body>');
+    } else if (slug === 'get-started') {
+      const mapSection = buildMapSection();
+      html = html.replace(/<\/body>/i, buildInjectionScript(null, mapSection) + '</body>');
     } else {
-      html = html.replace(/<\/body>/i, buildInjectionScript(null) + '</body>');
+      html = html.replace(/<\/body>/i, buildInjectionScript(null, null) + '</body>');
     }
 
     const skip = new Set(['content-length', 'content-encoding', 'transfer-encoding', 'connection']);
