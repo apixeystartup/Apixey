@@ -203,6 +203,7 @@ function buildInjectionScript(slug) {
     '@font-face{font-family:"teknolog";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2")}',
     ':root{--color-brown:#0f766e;--font-heading:"teknolog","sans-serif"}',
     '*{font-family:ki,sans-serif!important}',
+    '.font-heading,.bv-nav-link,.bv-nav-link .btn-text,.btn-text-cta,.bv-sep{font-family:teknolog,sans-serif!important}',
     'h1,h2,h3,h4,h5,h6{font-family:teknolog,sans-serif!important}',
     '.font-heading{font-family:var(--font-heading)}',
     '.btn-text{font-size:15px;font-weight:500;letter-spacing:0.5px}',
