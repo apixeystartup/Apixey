@@ -208,6 +208,8 @@ function buildInjectionScript(slug) {
     '#bv-header .btn-text-cta{font-family:teknolog,sans-serif!important}',
     '#bv-footer{font-family:ki,sans-serif!important}',
     '#bv-footer *{font-family:ki,sans-serif!important}',
+    '#SITE_PAGES *,#SITE_PAGES p,#SITE_PAGES span,#SITE_PAGES a,#SITE_PAGES div,#SITE_PAGES h1,#SITE_PAGES h2,#SITE_PAGES h3,#SITE_PAGES h4,#SITE_PAGES h5,#SITE_PAGES h6,#PAGES_CONTAINER *,#PAGES_CONTAINER p,#PAGES_CONTAINER span,#PAGES_CONTAINER a,#PAGES_CONTAINER div{font-family:ki,sans-serif!important}',
+    '#SITE_PAGES h1,#SITE_PAGES h2,#SITE_PAGES h3,#SITE_PAGES h4,#SITE_PAGES h5,#SITE_PAGES h6,#PAGES_CONTAINER h1,#PAGES_CONTAINER h2,#PAGES_CONTAINER h3,#PAGES_CONTAINER h4,#PAGES_CONTAINER h5,#PAGES_CONTAINER h6{font-family:teknolog,sans-serif!important}',
     '.btn-text{font-size:15px;font-weight:500;letter-spacing:0.5px}',
     '.bv-header{position:relative;z-index:50;width:100%;padding:40px 0 20px 0;background:rgba(255,255,255,0.95);box-sizing:border-box}',
     '.bv-header-inner{position:relative;width:100%;display:flex;align-items:center;justify-content:space-between;padding-inline:0}',
