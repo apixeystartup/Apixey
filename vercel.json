@@ -22,6 +22,8 @@
     { "source": "/home.html", "destination": "/", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/home/_api/(.*)", "destination": "https://brainvoiceai.wixstudio.com/home/_api/$1" },
+    { "source": "/_api/(.*)", "destination": "https://brainvoiceai.wixstudio.com/_api/$1" },
     { "source": "/((?!api|wp-content|index.html|static|css|js|assets|fonts|images|includes).*)", "destination": "/api/proxy?slug=$1" }
   ]
 }

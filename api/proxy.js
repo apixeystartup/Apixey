@@ -142,6 +142,9 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
     '#SITE_HEADER,#SITE_HEADER-wrapper,#SITE_HEADER-placeholder{visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}',
     '#SITE_FOOTER,#SITE_FOOTER-wrapper,#SITE_FOOTER-placeholder{display:none!important}',
     '#wmbr-base,[id*="wmbr"],[class*="wmbr"]{display:none!important}',
+    '#WIX_ADS{display:none!important}',
+    ':root{--wix-ads-height:0px!important}',
+    '#SITE_HEADER,#SITE_HEADER-wrapper,#SITE_HEADER-placeholder{visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}',
     '#bv-header{position:relative;z-index:50;width:100%;padding:40px 0 20px 0;background:rgba(255,255,255,0.95);box-sizing:border-box}',
     '#bv-header *{font-family:ki,sans-serif!important}',
     '#bv-header .bv-nav-link .btn-text,#bv-header .bv-sep,#bv-header .btn-text-cta{font-family:teknolog,sans-serif!important}',
@@ -657,15 +660,6 @@ export default async function handler(req, res) {
       headers: { 'User-Agent': 'Mozilla/5.0' }
     });
     let html = await response.text();
-
-    if (slug === 'about' || slug === 'get-started' || slug === 'careers') {
-      const iframePage = buildIframePage(slug);
-      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-      res.setHeader('Pragma', 'no-cache');
-      res.setHeader('Expires', '0');
-      res.status(200).send(iframePage);
-      return;
-    }
 
     if (slug === 'blogs') {
       const posts = parseBlogPosts(html);
