@@ -311,6 +311,7 @@ function parseBlogPosts(html) {
                   image: post.media?.wixMedia?.image?.url || post.heroImage?.url || '',
                   date: post.firstPublishedDate ? new Date(post.firstPublishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '',
                   minutesToRead: post.minutesToRead || 1,
+                  author: post.owner?.name || '',
                 });
               }
             }
@@ -334,6 +335,7 @@ function buildBlogSection(posts) {
         <h3 class="bv-blog-card__title">${post.title}</h3>
         <p class="bv-blog-card__excerpt">${post.excerpt.substring(0, 150)}...</p>
         <div class="bv-blog-card__meta">
+          <span class="bv-blog-card__author">Posted by ${post.author}</span>
           <span class="bv-blog-card__date">${post.date}</span>
           <span class="bv-blog-card__read">${post.minutesToRead} min read</span>
         </div>
@@ -355,8 +357,8 @@ function buildBlogSection(posts) {
       .bv-blog-card__body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1;}
       .bv-blog-card__title{font-family:teknolog,sans-serif;font-size:1.1rem;font-weight:700;color:#000;margin:0;line-height:1.3;}
       .bv-blog-card__excerpt{font-family:ki,sans-serif;font-size:0.85rem;color:#555;line-height:1.5;margin:0;flex:1;}
-      .bv-blog-card__meta{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:#888;margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.06);}
-      .bv-blog-card__date,.bv-blog-card__read{font-family:ki,sans-serif;}
+      .bv-blog-card__meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:0.75rem;color:#888;margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.06);}
+      .bv-blog-card__author,.bv-blog-card__date,.bv-blog-card__read{font-family:ki,sans-serif;}
     </style>
   `;
 }
