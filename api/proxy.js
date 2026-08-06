@@ -346,6 +346,24 @@ function buildBlogSection(posts) {
       .bv-blog-card__meta{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:#888;margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.06);}
       .bv-blog-card__date,.bv-blog-card__read{font-family:ki,sans-serif;}
     </style>
+    <script>
+    (function(){
+      var blogSection = document.getElementById('bv-blog-section');
+      if(blogSection) {
+        var observer = new MutationObserver(function(){
+          var footer = document.getElementById('bv-footer');
+          if(footer && blogSection.parentNode !== footer.parentNode) {
+            footer.parentNode.insertBefore(blogSection, footer);
+          }
+        });
+        observer.observe(document.body, {childList: true, subtree: true});
+        var footer = document.getElementById('bv-footer');
+        if(footer && blogSection.parentNode !== footer.parentNode) {
+          footer.parentNode.insertBefore(blogSection, footer);
+        }
+      }
+    })();
+    </script>
   `;
 }
 
