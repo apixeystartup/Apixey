@@ -6,7 +6,7 @@ const WIX_MAP = {
   'get-started': 'https://brainvoiceai.wixstudio.com/home/contact-us',
 };
 
-function buildInjectionScript() {
+function buildInjectionScript(blogSectionHtml) {
   const links = [
     { slug: 'about', label: 'About Us' },
     { slug: 'blogs', label: 'Blogs' },
@@ -130,6 +130,8 @@ function buildInjectionScript() {
     </footer>
   `).toString('base64');
 
+  const blogSectionB64 = blogSectionHtml ? Buffer.from(blogSectionHtml).toString('base64') : '';
+
   return `<script>
 (function(){
   var css=document.createElement('style');
@@ -248,6 +250,18 @@ function buildInjectionScript() {
     footerDiv.innerHTML=atob('${footerB64}');
     container.appendChild(footerDiv);
 
+    var blogHtml='${blogSectionB64}';
+    if(blogHtml){
+      var blogDiv=document.createElement('div');
+      blogDiv.innerHTML=atob(blogHtml);
+      var footer=document.getElementById('bv-footer');
+      if(footer){
+        footer.parentNode.insertBefore(blogDiv,footer);
+      }else{
+        container.appendChild(blogDiv);
+      }
+    }
+
     var btn=document.getElementById('bv-menu-btn');
     var nav=document.getElementById('bv-nav-links');
     if(btn&&nav){
@@ -346,24 +360,6 @@ function buildBlogSection(posts) {
       .bv-blog-card__meta{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:#888;margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.06);}
       .bv-blog-card__date,.bv-blog-card__read{font-family:ki,sans-serif;}
     </style>
-    <script>
-    (function(){
-      var blogSection = document.getElementById('bv-blog-section');
-      if(blogSection) {
-        var observer = new MutationObserver(function(){
-          var footer = document.getElementById('bv-footer');
-          if(footer && blogSection.parentNode !== footer.parentNode) {
-            footer.parentNode.insertBefore(blogSection, footer);
-          }
-        });
-        observer.observe(document.body, {childList: true, subtree: true});
-        var footer = document.getElementById('bv-footer');
-        if(footer && blogSection.parentNode !== footer.parentNode) {
-          footer.parentNode.insertBefore(blogSection, footer);
-        }
-      }
-    })();
-    </script>
   `;
 }
 
@@ -381,9 +377,9 @@ export default async function handler(req, res) {
     if (slug === 'blogs') {
       const posts = parseBlogPosts(html);
       const blogSection = buildBlogSection(posts);
-      html = html.replace(/<\/body>/i, blogSection + buildInjectionScript() + '</body>');
+      html = html.replace(/<\/body>/i, buildInjectionScript(blogSection) + '</body>');
     } else {
-      html = html.replace(/<\/body>/i, buildInjectionScript() + '</body>');
+      html = html.replace(/<\/body>/i, buildInjectionScript(null) + '</body>');
     }
 
     const skip = new Set(['content-length', 'content-encoding', 'transfer-encoding', 'connection']);
