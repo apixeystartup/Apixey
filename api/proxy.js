@@ -19,7 +19,7 @@ function buildInjectionScript(slug) {
 
   const navLinksHtml = links.map((l, i) => {
     const sep = i < links.length - 1 ? '<span class="font-heading bv-sep">/</span>' : '';
-    return '<a href="https://brainvoiceai.wixstudio.com/home/' + l.slug + '" class="bv-nav-link font-heading"><div class="btn-text">' + l.label + '</div></a>' + sep;
+    return '<a href="/' + l.slug + '" class="bv-nav-link font-heading"><div class="btn-text">' + l.label + '</div></a>' + sep;
   }).join('');
 
   const footerHtml = `
@@ -46,58 +46,58 @@ function buildInjectionScript(slug) {
           <div class="bv-site-footer__col bv-site-footer__col--explore">
             <h6 class="bv-site-footer__heading">Explore</h6>
             <ul class="bv-site-footer__links">
-              <li><a href="https://brainvoiceai.wixstudio.com/home/about">About Us</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/blogs">Blogs</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/careers">Careers</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/success-stories">Success Stories</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/contact-us">Get Started</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/blogs">Blogs</a></li>
+              <li><a href="/careers">Careers</a></li>
+              <li><a href="/success-stories">Success Stories</a></li>
+              <li><a href="/get-started">Get Started</a></li>
             </ul>
           </div>
           <div class="bv-site-footer__col">
             <h6 class="bv-site-footer__heading">About Us</h6>
             <ul class="bv-site-footer__links">
-              <li><a href="https://brainvoiceai.wixstudio.com/home/about">About WebTech</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/about">Our Team</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/about">Mission &amp; Values</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/careers">Careers</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/about">Community Involvement</a></li>
+              <li><a href="/about">About WebTech</a></li>
+              <li><a href="/about">Our Team</a></li>
+              <li><a href="/about">Mission &amp; Values</a></li>
+              <li><a href="/careers">Careers</a></li>
+              <li><a href="/about">Community Involvement</a></li>
             </ul>
           </div>
           <div class="bv-site-footer__col">
             <h6 class="bv-site-footer__heading">Services</h6>
             <ul class="bv-site-footer__links">
-              <li><a href="https://brainvoiceai.wixstudio.com/home/about">Software Development</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/contact-us">IT Consulting</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/contact-us">Web Design</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/success-stories">Digital Transformation</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/contact-us">Project Management</a></li>
+              <li><a href="/about">Software Development</a></li>
+              <li><a href="/get-started">IT Consulting</a></li>
+              <li><a href="/get-started">Web Design</a></li>
+              <li><a href="/success-stories">Digital Transformation</a></li>
+              <li><a href="/get-started">Project Management</a></li>
             </ul>
           </div>
           <div class="bv-site-footer__col">
             <h6 class="bv-site-footer__heading">Solutions</h6>
             <ul class="bv-site-footer__links">
-              <li><a href="https://brainvoiceai.wixstudio.com/home/success-stories">Industry Solutions</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/contact-us">Custom Solutions</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/success-stories">Case Studies</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/success-stories">Client Success</a></li>
-              <li><a href="https://brainvoiceai.wixstudio.com/home/contact-us">Partnership</a></li>
+              <li><a href="/success-stories">Industry Solutions</a></li>
+              <li><a href="/get-started">Custom Solutions</a></li>
+              <li><a href="/success-stories">Case Studies</a></li>
+              <li><a href="/success-stories">Client Success</a></li>
+              <li><a href="/get-started">Partnership</a></li>
             </ul>
           </div>
           <div class="footer-resources-form-row">
             <div class="footer-col-resources bv-site-footer__col">
               <h6 class="bv-site-footer__heading">Resources</h6>
               <ul class="bv-site-footer__links">
-                <li><a href="https://brainvoiceai.wixstudio.com/home/blogs">Blog</a></li>
-                <li><a href="https://brainvoiceai.wixstudio.com/home/blogs">Whitepapers</a></li>
-                <li><a href="https://brainvoiceai.wixstudio.com/home/blogs">Webinars</a></li>
-                <li><a href="https://brainvoiceai.wixstudio.com/home/contact-us">FAQs</a></li>
-                <li><a href="https://brainvoiceai.wixstudio.com/home/blogs">Knowledge Base</a></li>
-                <li><a href="https://brainvoiceai.wixstudio.com/home/success-stories">Testimonials</a></li>
+                <li><a href="/blogs">Blog</a></li>
+                <li><a href="/blogs">Whitepapers</a></li>
+                <li><a href="/blogs">Webinars</a></li>
+                <li><a href="/get-started">FAQs</a></li>
+                <li><a href="/blogs">Knowledge Base</a></li>
+                <li><a href="/success-stories">Testimonials</a></li>
               </ul>
             </div>
             <div class="footer-col-get-started bv-site-footer__col">
               <h6 class="bv-site-footer__heading">Get started</h6>
-              <form class="bv-site-footer__form" action="https://brainvoiceai.wixstudio.com/home/contact-us" method="get">
+              <form class="bv-site-footer__form" action="/get-started" method="get">
                 <label class="bv-site-footer__field">
                   <span>First name*</span>
                   <input type="text" name="first_name" placeholder="First name" required>
@@ -287,7 +287,7 @@ function buildInjectionScript(slug) {
           '${navLinksHtml}'+
         '</div>'+
         '<div class="bv-desktop-cta">'+
-          '<a href="https://brainvoiceai.wixstudio.com/home/contact-us" class="bv-cta-btn font-heading">'+
+          '<a href="/get-started" class="bv-cta-btn font-heading">'+
             '<svg viewBox="0 0 34 209" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.2653e-05 33.9999L0 208.5L34 208.5L34.0001 -0.000108298L6.2653e-05 33.9999Z" class="fill-brown"/></svg>'+
             '<div class="btn-text-cta">Get started</div>'+
             '<svg viewBox="0 0 34 209" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M33.9999 174.5L34 0L-7.62939e-06 -1.48619e-06L-8.54078e-05 208.5L33.9999 174.5Z" class="fill-brown"/></svg>'+
