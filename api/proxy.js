@@ -134,8 +134,8 @@ function buildInjectionScript() {
 (function(){
   var css=document.createElement('style');
   css.textContent=[
-    '@font-face{font-family:"ki";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/ki.woff")}',
-    '@font-face{font-family:"teknolog";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2")}',
+    '@font-face{font-family:"ki";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/ki.woff?v=2")}',
+    '@font-face{font-family:"teknolog";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2?v=2")}',
     '#SITE_HEADER,#SITE_HEADER-wrapper,#SITE_HEADER-placeholder{visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}',
     '#SITE_FOOTER,#SITE_FOOTER-wrapper,#SITE_FOOTER-placeholder{display:none!important}',
     '#wmbr-base,[id*="wmbr"],[class*="wmbr"]{display:none!important}',
@@ -287,7 +287,9 @@ export default async function handler(req, res) {
     response.headers.forEach((value, key) => {
       if (!skip.has(key.toLowerCase())) res.setHeader(key, value);
     });
-    res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
     res.status(200).send(html);
   } catch (err) {
     res.status(502).send('Failed to load page');
