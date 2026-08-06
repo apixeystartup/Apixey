@@ -294,7 +294,7 @@ function parseBlogPosts(html) {
                   excerpt: post.excerpt || '',
                   slug: post.slug || '',
                   url: post.url?.path ? `https://brainvoiceai.wixstudio.com${post.url.path}` : '',
-                  image: post.heroImage?.url || '',
+                  image: post.media?.wixMedia?.image?.url || post.heroImage?.url || '',
                   date: post.firstPublishedDate ? new Date(post.firstPublishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '',
                   minutesToRead: post.minutesToRead || 1,
                 });
