@@ -140,7 +140,7 @@ function buildInjectionScript() {
     '#SITE_FOOTER,#SITE_FOOTER-wrapper,#SITE_FOOTER-placeholder{display:none!important}',
     '#wmbr-base,[id*="wmbr"],[class*="wmbr"]{display:none!important}',
     '#bv-header{position:relative;z-index:50;width:100%;padding:40px 0 20px 0;background:rgba(255,255,255,0.95);box-sizing:border-box}',
-    '#bv-header *{font-family:teknolog,sans-serif!important}',
+    '#bv-header *{font-family:ki,sans-serif!important}',
     '.bv-header-inner{position:relative;width:100%;display:flex;align-items:center;justify-content:space-between;padding-inline:0}',
     '.bv-nav-links{display:none;flex-direction:row;align-items:center;gap:12px}',
     '@media(min-width:768px){.bv-nav-links{display:flex}}',
@@ -150,7 +150,7 @@ function buildInjectionScript() {
     '.bv-nav-link{text-decoration:none;color:black;transition:color 0.2s ease}',
     '.bv-nav-link:hover{color:#0f766e}',
     '.bv-nav-link .btn-text{font-size:15px;font-weight:500;letter-spacing:0.5px}',
-    '.bv-sep{font-family:teknolog,sans-serif;color:black}',
+    '.bv-sep{font-family:ki,sans-serif;color:black}',
     '.bv-hide-desktop{display:none}',
     '@media(max-width:767px){.bv-hide-desktop{display:flex!important}}',
     '.bv-desktop-cta{display:none}',
@@ -159,7 +159,7 @@ function buildInjectionScript() {
     '.bv-cta-btn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(15,118,110,0.3)}',
     '.bv-cta-btn svg{height:44px;width:20px}',
     '.bv-cta-btn .fill-brown{fill:#0f766e}',
-    '.bv-cta-btn .btn-text-cta{padding:0 16px;background:#0f766e;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;font-weight:500;letter-spacing:0.5px;font-family:teknolog,sans-serif}',
+    '.bv-cta-btn .btn-text-cta{padding:0 16px;background:#0f766e;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;font-weight:500;letter-spacing:0.5px;font-family:ki,sans-serif}',
     '.bv-hamburger{display:flex;background:none;border:none;cursor:pointer;padding:5px}',
     '.bv-hamburger:hover{opacity:0.8}',
     '@media(min-width:768px){.bv-hamburger{display:none}}',
@@ -167,8 +167,8 @@ function buildInjectionScript() {
     '.bv-right-nav{padding-right:10px}',
     '@media(min-width:768px){.bv-logo{padding-left:40px}}',
     '@media(min-width:768px){.bv-right-nav{padding-right:40px}}',
-    '#bv-footer{font-family:teknolog,sans-serif!important}',
-    '#bv-footer *{font-family:teknolog,sans-serif!important}',
+    '#bv-footer{font-family:ki,sans-serif!important}',
+    '#bv-footer *{font-family:ki,sans-serif!important}',
     '.bv-site-footer{position:relative;z-index:20;width:100%;color:#0f5053}',
     '.bv-site-footer__shape{display:block;width:100%;margin-bottom:-1px}',
     '.bv-site-footer__inner{background:#fff;padding:1.5rem 1rem 0}',
@@ -215,7 +215,7 @@ function buildInjectionScript() {
     hdr.id='bv-header';
     hdr.innerHTML='<div class="bv-header-inner">'+
       '<a href="https://brainvoice.ai" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">'+
-        '<span style="font-family:teknolog,sans-serif;font-size:30px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>'+
+        '<span style="font-family:ki,sans-serif;font-size:30px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>'+
       '</a>'+
       '<div style="display:flex;flex-direction:row;align-items:center;gap:16px;" class="bv-right-nav">'+
         '<div id="bv-nav-links" class="bv-nav-links">'+
