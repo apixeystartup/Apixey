@@ -270,6 +270,73 @@ function buildInjectionScript() {
 </script>`;
 }
 
+function parseBlogPosts(html) {
+  const posts = [];
+  const warmupMatch = html.match(/"appsWarmupData"\s*:\s*\{[^}]*"post-list-comp[^}]*\}\s*\}\s*\}\s*\}/);
+  if (!warmupMatch) return posts;
+  
+  try {
+    const warmupStr = warmupMatch[0];
+    const postsMatch = warmupStr.match(/"posts"\s*:\s*\[(.*?)\]/s);
+    if (!postsMatch) return posts;
+    
+    const postsArr = JSON.parse('[' + postsMatch[1] + ']');
+    for (const post of postsArr) {
+      posts.push({
+        title: post.title || '',
+        excerpt: post.excerpt || '',
+        slug: post.slug || '',
+        url: post.url?.path ? `https://brainvoiceai.wixstudio.com${post.url.path}` : '',
+        image: post.heroImage?.url || '',
+        author: post.firstPublishedDate ? new Date(post.firstPublishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '',
+        minutesToRead: post.minutesToRead || 1,
+      });
+    }
+  } catch (e) {}
+  return posts;
+}
+
+function buildBlogSection(posts) {
+  if (!posts.length) return '';
+  
+  const cards = posts.map(post => `
+    <a href="${post.url}" target="_blank" rel="noopener noreferrer" class="bv-blog-card">
+      <div class="bv-blog-card__image">
+        <img src="${post.image}" alt="${post.title}" loading="lazy">
+      </div>
+      <div class="bv-blog-card__body">
+        <h3 class="bv-blog-card__title">${post.title}</h3>
+        <p class="bv-blog-card__excerpt">${post.excerpt.substring(0, 150)}...</p>
+        <div class="bv-blog-card__meta">
+          <span class="bv-blog-card__date">${post.author}</span>
+          <span class="bv-blog-card__read">${post.minutesToRead} min read</span>
+        </div>
+      </div>
+    </a>
+  `).join('');
+
+  return `
+    <div id="bv-blog-section" style="font-family:ki,sans-serif;max-width:1200px;margin:0 auto;padding:60px 20px;">
+      <h2 style="font-family:teknolog,sans-serif;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;text-transform:uppercase;text-align:center;margin-bottom:12px;color:#000;">Latest Blog Posts</h2>
+      <p style="text-align:center;color:#666;margin-bottom:40px;font-size:1rem;">Insights, trends, and updates from Brainvoice AI</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px;">
+        ${cards}
+      </div>
+    </div>
+    <style>
+      .bv-blog-card{display:flex;flex-direction:column;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;text-decoration:none;color:inherit;transition:transform 0.2s ease,box-shadow 0.2s ease;}
+      .bv-blog-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.1);}
+      .bv-blog-card__image{width:100%;aspect-ratio:16/9;overflow:hidden;}
+      .bv-blog-card__image img{width:100%;height:100%;object-fit:cover;}
+      .bv-blog-card__body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1;}
+      .bv-blog-card__title{font-family:teknolog,sans-serif;font-size:1.1rem;font-weight:700;color:#000;margin:0;line-height:1.3;}
+      .bv-blog-card__excerpt{font-family:ki,sans-serif;font-size:0.85rem;color:#555;line-height:1.5;margin:0;flex:1;}
+      .bv-blog-card__meta{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:#888;margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.06);}
+      .bv-blog-card__date,.bv-blog-card__read{font-family:ki,sans-serif;}
+    </style>
+  `;
+}
+
 export default async function handler(req, res) {
   const slug = req.query.slug;
   const wixUrl = WIX_MAP[slug];
@@ -281,7 +348,13 @@ export default async function handler(req, res) {
     });
     let html = await response.text();
 
-    html = html.replace(/<\/body>/i, buildInjectionScript() + '</body>');
+    if (slug === 'blogs') {
+      const posts = parseBlogPosts(html);
+      const blogSection = buildBlogSection(posts);
+      html = html.replace(/<\/body>/i, blogSection + buildInjectionScript() + '</body>');
+    } else {
+      html = html.replace(/<\/body>/i, buildInjectionScript() + '</body>');
+    }
 
     const skip = new Set(['content-length', 'content-encoding', 'transfer-encoding', 'connection']);
     response.headers.forEach((value, key) => {
