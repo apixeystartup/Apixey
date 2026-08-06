@@ -657,11 +657,16 @@ export default async function handler(req, res) {
 
   try {
     if (slug === 'about' || slug === 'get-started' || slug === 'careers') {
-      const iframePage = buildIframePage(slug);
+      const response2 = await fetch(wixUrl, { headers: { 'User-Agent': 'Mozilla/5.0' } });
+      let wixHtml = await response2.text();
+      wixHtml = wixHtml.replace(/<head([^>]*)>/i, '<head$1><base href="https://brainvoiceai.wixstudio.com/home/">');
+      wixHtml = wixHtml.replace(/<\/body>/i, buildInjectionScript(null, null) + '</body>');
+      const skip2 = new Set(['content-length', 'content-encoding', 'transfer-encoding', 'connection']);
+      response2.headers.forEach((value, key) => { if (!skip2.has(key.toLowerCase())) res.setHeader(key, value); });
       res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
       res.setHeader('Pragma', 'no-cache');
       res.setHeader('Expires', '0');
-      res.status(200).send(iframePage);
+      res.status(200).send(wixHtml);
       return;
     }
 
