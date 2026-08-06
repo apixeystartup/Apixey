@@ -272,25 +272,37 @@ function buildInjectionScript() {
 
 function parseBlogPosts(html) {
   const posts = [];
-  const warmupMatch = html.match(/"appsWarmupData"\s*:\s*\{[^}]*"post-list-comp[^}]*\}\s*\}\s*\}\s*\}/);
-  if (!warmupMatch) return posts;
-  
   try {
-    const warmupStr = warmupMatch[0];
-    const postsMatch = warmupStr.match(/"posts"\s*:\s*\[(.*?)\]/s);
-    if (!postsMatch) return posts;
+    const warmupMatch = html.match(/<script[^>]*id="wix-warmup-data"[^>]*>([\s\S]*?)<\/script>/);
+    if (!warmupMatch) return posts;
     
-    const postsArr = JSON.parse('[' + postsMatch[1] + ']');
-    for (const post of postsArr) {
-      posts.push({
-        title: post.title || '',
-        excerpt: post.excerpt || '',
-        slug: post.slug || '',
-        url: post.url?.path ? `https://brainvoiceai.wixstudio.com${post.url.path}` : '',
-        image: post.heroImage?.url || '',
-        author: post.firstPublishedDate ? new Date(post.firstPublishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '',
-        minutesToRead: post.minutesToRead || 1,
-      });
+    const warmupData = JSON.parse(warmupMatch[1]);
+    const appsData = warmupData?.appsWarmupData;
+    if (!appsData) return posts;
+    
+    for (const appId of Object.keys(appsData)) {
+      const appData = appsData[appId];
+      for (const key of Object.keys(appData)) {
+        if (key.startsWith('post-list-')) {
+          try {
+            const innerData = JSON.parse(appData[key]);
+            const postsList = innerData?.response?.data?.postFeedPage?.posts?.posts;
+            if (Array.isArray(postsList)) {
+              for (const post of postsList) {
+                posts.push({
+                  title: post.title || '',
+                  excerpt: post.excerpt || '',
+                  slug: post.slug || '',
+                  url: post.url?.path ? `https://brainvoiceai.wixstudio.com${post.url.path}` : '',
+                  image: post.heroImage?.url || '',
+                  date: post.firstPublishedDate ? new Date(post.firstPublishedDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : '',
+                  minutesToRead: post.minutesToRead || 1,
+                });
+              }
+            }
+          } catch (e) {}
+        }
+      }
     }
   } catch (e) {}
   return posts;
@@ -308,7 +320,7 @@ function buildBlogSection(posts) {
         <h3 class="bv-blog-card__title">${post.title}</h3>
         <p class="bv-blog-card__excerpt">${post.excerpt.substring(0, 150)}...</p>
         <div class="bv-blog-card__meta">
-          <span class="bv-blog-card__date">${post.author}</span>
+          <span class="bv-blog-card__date">${post.date}</span>
           <span class="bv-blog-card__read">${post.minutesToRead} min read</span>
         </div>
       </div>
