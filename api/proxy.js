@@ -537,7 +537,7 @@ function buildIframePage(slug) {
     </div>
   </header>
 
-  <div id="wix-wrap"><iframe id="wix-frame" src="${wixUrl}" scrolling="no"></iframe></div>
+  <div id="wix-wrap"><iframe id="wix-frame" src="${wixUrl}"></iframe></div>
 
   <footer id="bv-footer" class="bv-site-footer">
     <svg class="bv-site-footer__shape" viewBox="0 0 1316 71" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
