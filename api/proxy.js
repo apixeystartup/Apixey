@@ -493,8 +493,8 @@ function buildIframePage(slug) {
     .footer-legal__credit a{color:#315e60;text-decoration:none;}
     @media(min-width:1024px){.bv-site-footer__grid{display:grid;grid-template-columns:minmax(200px,1.35fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.8fr) minmax(160px,1fr);align-items:start;gap:1.25rem 1rem;}.bv-site-footer__col--explore{display:none;}.footer-resources-form-row{display:contents;}.bv-site-footer__brand{flex:unset;max-width:none;}.bv-site-footer__col{flex:unset;min-width:0;padding-top:0.5rem;}.footer-col-resources,.footer-col-get-started{flex:unset;max-width:none;}.bv-site-footer__heading{font-size:1.05rem;position:relative;padding-bottom:0.5rem;}.bv-site-footer__heading::after{content:"";display:block;width:2.5rem;height:3px;margin-top:0.35rem;background:#13b0cb;}.bv-site-footer__links a{font-size:0.72rem;white-space:normal;line-height:1.35;}.footer-legal{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;}.footer-legal__links{margin-top:0}}
 
-    /* Iframe fills remaining space */
-    #wix-frame{width:100%;flex:1;border:none;display:block;}
+    /* Iframe fills remaining space, negative margin hides Wix banner */
+    #wix-frame{width:100%;flex:1;border:none;display:block;margin-top:-50px;padding-top:50px;}
     html,body{height:100%;}
     body{display:flex;flex-direction:column;}
   </style>
@@ -656,6 +656,15 @@ export default async function handler(req, res) {
   if (!wixUrl) return res.status(404).send('Not found');
 
   try {
+    if (slug === 'about' || slug === 'get-started' || slug === 'careers') {
+      const iframePage = buildIframePage(slug);
+      res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      res.setHeader('Pragma', 'no-cache');
+      res.setHeader('Expires', '0');
+      res.status(200).send(iframePage);
+      return;
+    }
+
     const response = await fetch(wixUrl, {
       headers: { 'User-Agent': 'Mozilla/5.0' }
     });
