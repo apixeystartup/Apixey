@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Success Stories | BRAINVOICE.AI</title>
+  <link rel="icon" href="./wp-content/uploads/2025/03/cropped-Favicon-32x32.png" sizes="32x32">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    @font-face {
+      font-family: 'ki';
+      src: url('https://brainvoice.ai/wp-content/themes/startdigital/static/font/ki.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'teknolog';
+      src: url('https://brainvoice.ai/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'ki', sans-serif;
+      color: #1a1a1a;
+      background: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    .font-heading { font-family: 'teknolog', sans-serif; }
+
+    #bv-nav-links { display: none; }
+    #bv-desktop-cta { display: none; }
+    #bv-menu-btn { display: none; }
+    @media (min-width: 768px) {
+      #bv-nav-links { display: flex !important; }
+      #bv-desktop-cta { display: block !important; }
+    }
+    @media (max-width: 767px) {
+      #bv-menu-btn { display: flex !important; }
+    }
+    #bv-nav-links.mobile-active {
+      display: flex !important;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #fff;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      gap: 1.25rem;
+      z-index: 100;
+    }
+
+    .page-hero {
+      background: linear-gradient(135deg, #0f2027, #0f766e);
+      color: #fff;
+      padding: 8rem 2rem 5rem;
+      text-align: center;
+    }
+    .page-hero h1 {
+      font-family: 'teknolog', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    .page-hero p {
+      font-size: 1.15rem;
+      max-width: 640px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    .content-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+    .content-section h2 {
+      font-family: 'teknolog', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #0f766e;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
+    }
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background: #0f766e;
+      margin-bottom: 2rem;
+    }
+    .content-section p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: #333;
+      max-width: 800px;
+    }
+
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .story-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .story-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+    }
+    .story-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      font-size: 4rem;
+      font-family: Georgia, serif;
+      color: rgba(15,118,110,0.12);
+      line-height: 1;
+    }
+    .story-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(15,118,110,0.08);
+      color: #0f766e;
+      font-family: 'teknolog', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.4rem 0.85rem;
+      border-radius: 20px;
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+    .story-result i { font-size: 0.65rem; }
+    .story-quote {
+      font-size: 1.05rem;
+      font-style: italic;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+      flex-grow: 1;
+    }
+    .story-client {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 1.25rem;
+    }
+    .story-avatar {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: 'teknolog', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .story-name {
+      font-family: 'teknolog', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .story-role {
+      font-size: 0.8rem;
+      color: #888;
+    }
+
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .metric {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+    }
+    .metric-number {
+      font-family: 'teknolog', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0f766e;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .metric-label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .cta-banner {
+      background: linear-gradient(135deg, #0f766e, #14b8a6);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 2rem;
+    }
+    .cta-banner h2 {
+      font-family: 'teknolog', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .cta-banner p {
+      font-size: 1.05rem;
+      opacity: 0.9;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+    }
+    .cta-banner a {
+      display: inline-flex;
+      align-items: stretch;
+      text-decoration: none;
+    }
+    .cta-banner .cta-bg { background: #fff; color: #0f766e; padding: 0 20px; display: flex; align-items: center; font-family: 'teknolog', sans-serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; }
+
+    /* Footer */
+    footer { background: #2e2c2b; color: #fff; }
+    footer a { color: #ccc; text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: #fff; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem 2rem; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-brand p { font-size: 0.9rem; color: #aaa; margin-top: 1rem; line-height: 1.6; }
+    .footer-col h6 {
+      font-family: 'teknolog', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.5rem; }
+    .footer-col ul li a { font-size: 0.9rem; }
+    .footer-social { display: flex; gap: 0.75rem; margin-top: 1rem; }
+    .footer-social a {
+      width: 36px; height: 36px; border: 1px solid #555; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    .footer-social a:hover { border-color: #0f766e; color: #0f766e; }
+    .footer-bottom {
+      border-top: 1px solid #444; padding-top: 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: #999;
+    }
+    .footer-bottom a { font-size: 0.85rem; }
+  </style>
+</head>
+<body>
+
+<header style="position:relative;z-index:50;width:100%;padding:40px 0 20px 0;background:rgba(255,255,255,0.95);box-sizing:border-box;">
+  <div style="position:relative;width:100%;display:flex;align-items:center;justify-content:space-between;padding-inline:0;">
+    <a href="/" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;padding-left:40px;">
+      <span style="font-family:ki,sans-serif;font-size:30px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
+    </a>
+    <div style="display:flex;flex-direction:row;align-items:center;gap:16px;padding-right:40px;">
+      <div id="bv-nav-links" style="display:none;flex-direction:row;align-items:center;gap:12px;" class="font-heading">
+        <a href="/about" style="text-decoration:none;color:black;"><div style="font-size:15px;font-weight:500;letter-spacing:0.5px;">About Us</div></a>
+        <span style="font-family:teknolog,sans-serif;color:black;">/</span>
+        <a href="/blogs" style="text-decoration:none;color:black;"><div style="font-size:15px;font-weight:500;letter-spacing:0.5px;">Blogs</div></a>
+        <span style="font-family:teknolog,sans-serif;color:black;">/</span>
+        <a href="/careers" style="text-decoration:none;color:black;"><div style="font-size:15px;font-weight:500;letter-spacing:0.5px;">Careers</div></a>
+        <span style="font-family:teknolog,sans-serif;color:black;">/</span>
+        <a href="/success-stories" style="text-decoration:none;color:black;"><div style="font-size:15px;font-weight:500;letter-spacing:0.5px;">Success Stories</div></a>
+        <span style="font-family:teknolog,sans-serif;color:black;">/</span>
+        <a href="/get-started" style="text-decoration:none;color:black;"><div style="font-size:15px;font-weight:500;letter-spacing:0.5px;">Get Started</div></a>
+      </div>
+      <div id="bv-desktop-cta" style="display:none;">
+        <a href="/get-started" style="height:44px;display:flex;align-items:stretch;text-decoration:none;margin-left:20px;">
+          <svg viewBox="0 0 34 209" fill="none" style="height:44px;width:20px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.2653e-05 33.9999L0 208.5L34 208.5L34.0001 -0.000108298L6.2653e-05 33.9999Z" fill="#0f766e"/></svg>
+          <div style="padding:0 16px;background:#0f766e;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;font-weight:500;letter-spacing:0.5px;font-family:teknolog,sans-serif;">Get started</div>
+          <svg viewBox="0 0 34 209" fill="none" style="height:44px;width:20px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M33.9999 174.5L34 0L-7.62939e-06 -1.48619e-06L-8.54078e-05 208.5L33.9999 174.5Z" fill="#0f766e"/></svg>
+        </a>
+      </div>
+      <button id="bv-menu-btn" style="display:flex;background:none;border:none;cursor:pointer;padding:5px;" aria-label="Menu">
+        <svg width="28" height="20" viewBox="0 0 28 20" fill="none">
+          <rect y="0" width="28" height="3" rx="1.5" fill="url(#bvg)"/>
+          <rect y="8.5" width="28" height="3" rx="1.5" fill="url(#bvg)"/>
+          <rect y="17" width="28" height="3" rx="1.5" fill="url(#bvg)"/>
+          <defs><linearGradient id="bvg" x1="0" y1="0" x2="28" y2="20" gradientUnits="userSpaceOnUse"><stop stop-color="#13B0CB"/><stop offset="0.5" stop-color="#27B6B7"/><stop offset="1" stop-color="#39BA9F"/></linearGradient></defs>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <h1>Success Stories</h1>
+  <p>See how our clients have transformed their businesses with AI-powered solutions from Brainvoice.AI.</p>
+</section>
+
+<section class="content-section">
+  <div class="section-divider"></div>
+  <h2>Client Results</h2>
+  <p>Every engagement is measured by the outcomes it delivers. Here are some of the results our clients have achieved by partnering with Brainvoice.AI.</p>
+
+  <div class="metrics-bar">
+    <div class="metric">
+      <div class="metric-number">3x</div>
+      <div class="metric-label">Average ROI Increase</div>
+    </div>
+    <div class="metric">
+      <div class="metric-number">85%</div>
+      <div class="metric-label">Reduction in Manual Work</div>
+    </div>
+    <div class="metric">
+      <div class="metric-number">99.8%</div>
+      <div class="metric-label">Data Accuracy Rate</div>
+    </div>
+    <div class="metric">
+      <div class="metric-number">40%</div>
+      <div class="metric-label">Faster Time-to-Market</div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" style="background:#f9fafb;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-divider"></div>
+    <h2>What Our Clients Say</h2>
+
+    <div class="stories-grid">
+      <div class="story-card">
+        <div class="story-result"><i class="fas fa-arrow-up"></i> 3x Revenue Growth</div>
+        <p class="story-quote">"We needed a partner who understood the operational challenges of scaling a business. Brainvoice helped us automate routine workflows and scale our revenue streams, all while keeping our data secure. Their team is hands-on, highly responsive, and feels like a natural extension of our own staff."</p>
+        <div class="story-client">
+          <div class="story-avatar">S</div>
+          <div>
+            <div class="story-name">Sulaiman</div>
+            <div class="story-role">CEO, Ezone</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result"><i class="fas fa-arrow-up"></i> Zero Hallucinations</div>
+        <p class="story-quote">"Integrating generative AI with legacy enterprise software is always tricky. Brainvoice's AI and Agentic RAG architecture solved that for us effortlessly. Our private data remains secure on-premise, and we finally have a customer-facing system that retrieves accurate internal information without any hallucinations."</p>
+        <div class="story-client">
+          <div class="story-avatar">J</div>
+          <div>
+            <div class="story-name">Jidesh Gopinath</div>
+            <div class="story-role">CTO, AVCRI</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result"><i class="fas fa-arrow-up"></i> 100% Audit Accuracy</div>
+        <p class="story-quote">"Managing compliance and carbon credits across our plantations used to be a complex challenge. Brainvoice helped us build a smart, unified system that tracks data effortlessly and generates completely accurate, audit-ready reports."</p>
+        <div class="story-client">
+          <div class="story-avatar">H</div>
+          <div>
+            <div class="story-name">Hafiz Khan</div>
+            <div class="story-role">CEO, Communitree</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result"><i class="fas fa-arrow-up"></i> 60% Cost Reduction</div>
+        <p class="story-quote">"Brainvoice's AI-powered analytics platform completely transformed how we monitor campaign performance. We went from spending weeks compiling reports to having real-time dashboards that give us instant visibility into what's working and what's not."</p>
+        <div class="story-client">
+          <div class="story-avatar">A</div>
+          <div>
+            <div class="story-name">Arun Mehta</div>
+            <div class="story-role">Marketing Director, NexGen Retail</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result"><i class="fas fa-arrow-up"></i> 95% Defect Detection</div>
+        <p class="story-quote">"The quality control AI solution Brainvoice built for us has been a game-changer. We've virtually eliminated defective products from reaching our customers, and the predictive maintenance alerts have saved us hundreds of thousands in potential downtime."</p>
+        <div class="story-client">
+          <div class="story-avatar">R</div>
+          <div>
+            <div class="story-name">Rachel Tan</div>
+            <div class="story-role">VP Operations, Precision Manufacturing Co.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-card">
+        <div class="story-result"><i class="fas fa-arrow-up"></i> 50% Faster Onboarding</div>
+        <p class="story-quote">"The custom ERP solution Brainvoice developed has streamlined our entire hospital operation. From patient intake to resource allocation, everything runs more efficiently. The human-in-the-loop design ensures our medical staff always has final oversight."</p>
+        <div class="story-client">
+          <div class="story-avatar">D</div>
+          <div>
+            <div class="story-name">Dr. Priya Sharma</div>
+            <div class="story-role">Chief Medical Officer, HealthFirst Network</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <h2>Ready to Write Your Success Story?</h2>
+  <p>Let's discuss how Brainvoice.AI can help your organization achieve measurable results.</p>
+  <a href="/get-started">
+    <svg viewBox="0 0 34 209" fill="none" style="height:44px;width:20px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.2653e-05 33.9999L0 208.5L34 208.5L34.0001 -0.000108298L6.2653e-05 33.9999Z" fill="#fff"/></svg>
+    <div class="cta-bg">Get Started</div>
+    <svg viewBox="0 0 34 209" fill="none" style="height:44px;width:20px;"><path fill-rule="evenodd" clip-rule="evenodd" d="M33.9999 174.5L34 0L-7.62939e-06 -1.48619e-06L-8.54078e-05 208.5L33.9999 174.5Z" fill="#fff"/></svg>
+  </a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" style="font-family:ki,sans-serif;font-size:24px;font-weight:700;color:#fff;text-decoration:none;">BRAINVOICE.<span style="color:#51C186;">AI</span></a>
+        <p>Brainvoice.AI is a cutting-edge digital marketing analytical and IT company dedicated to revolutionizing the way organizations achieve business growth and expansion.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h6>Explore</h6>
+        <ul>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/blogs">Blogs</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/success-stories">Success Stories</a></li>
+          <li><a href="/get-started">Get Started</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Services</h6>
+        <ul>
+          <li><a href="/about">Software Development</a></li>
+          <li><a href="/get-started">IT Consulting</a></li>
+          <li><a href="/get-started">Web Design</a></li>
+          <li><a href="/success-stories">Digital Transformation</a></li>
+          <li><a href="/get-started">Project Management</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Solutions</h6>
+        <ul>
+          <li><a href="/success-stories">Industry Solutions</a></li>
+          <li><a href="/get-started">Custom Solutions</a></li>
+          <li><a href="/success-stories">Case Studies</a></li>
+          <li><a href="/success-stories">Client Success</a></li>
+          <li><a href="/get-started">Partnership</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Resources</h6>
+        <ul>
+          <li><a href="/blogs">Blog</a></li>
+          <li><a href="/blogs">Whitepapers</a></li>
+          <li><a href="/blogs">Webinars</a></li>
+          <li><a href="/get-started">FAQs</a></li>
+          <li><a href="/success-stories">Testimonials</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div><a href="#">Terms &amp; conditions</a> | <a href="#">Privacy policy</a></div>
+      <div><span>Built for Brainvoice AI</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var nav = document.getElementById('bv-nav-links');
+  var btn = document.getElementById('bv-menu-btn');
+  if (btn && nav) {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      nav.classList.toggle('mobile-active');
+    });
+    document.addEventListener('click', function(e) {
+      if (nav.classList.contains('mobile-active') && !nav.contains(e.target) && !btn.contains(e.target)) {
+        nav.classList.remove('mobile-active');
+      }
+    });
+    nav.querySelectorAll('a').forEach(function(a) {
+      a.addEventListener('click', function() { nav.classList.remove('mobile-active'); });
+    });
+  }
+})();
+</script>
+</body>
+</html>
