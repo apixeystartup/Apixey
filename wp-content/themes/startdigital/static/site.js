@@ -8273,8 +8273,11 @@
   gsapWithCSS.registerPlugin(ScrollTrigger2);
   function initSmoothScroll() {
     const lenis = new Lenis({
-      overscroll: false
+      smoothWheel: true,
+      overscroll: false,
+      duration: 0.6
     });
+    window.lenis = lenis;
     lenis.on("scroll", ScrollTrigger2.update);
     gsapWithCSS.ticker.add((time) => {
       lenis.raf(time * 1e3);

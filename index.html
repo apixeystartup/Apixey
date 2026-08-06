@@ -96,19 +96,6 @@
 
 		/* Mobile-specific: Bypass smooth-scroll fixed wrapper to prevent sticking */
 		@media (max-width: 1024px) {
-			#smooth-wrapper {
-				position: relative !important;
-				height: auto !important;
-				overflow: visible !important;
-				touch-action: auto !important;
-			}
-
-			#smooth-content {
-				position: relative !important;
-				width: 100% !important;
-				height: auto !important;
-				overflow: visible !important;
-			}
 
 			/* Ensure pinned sections don't trap the user */
 			[data-scroll-section],
@@ -120,7 +107,7 @@
 
 		#smooth-wrapper,
 		#smooth-content {
-			min-height: 100% !important;
+			display: contents !important;
 		}
 
 		.swiper,
@@ -2694,7 +2681,7 @@
 					</div>
 				</div>
 			</section>
-			<div class="flex flex-col relative z-20 pb-[2px] tabel:pb-[2px] px-[2px] items-center overflow-x-hidden">
+			<div class="flex flex-col relative z-20">
 
 				<div id="site-footer-mount"></div>
 	<script src="includes/load-site-footer.js" defer></script>
@@ -2830,15 +2817,6 @@
 					ignoreMobileResize: true,
 					limitCallbacks: true
 				});
-
-				// Standardize scroll for mobile
-				if (!isMobile) {
-					ScrollTrigger.normalizeScroll({
-						allowNestedScroll: true,
-						momentum: true,
-						type: "touch,wheel,pointer"
-					});
-				}
 			}
 
 			// Auto-cycle logic for mobile
