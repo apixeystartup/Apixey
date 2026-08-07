@@ -626,21 +626,13 @@ function buildIframePage(slug) {
           </div>
           <div class="footer-col-get-started bv-site-footer__col">
             <h6 class="bv-site-footer__heading">Get started</h6>
-            <form class="bv-site-footer__form" action="/get-started" method="get">
-              <label class="bv-site-footer__field">
-                <span>First name*</span>
-                <input type="text" name="first_name" placeholder="First name" required>
-              </label>
-              <label class="bv-site-footer__field">
-                <span>Last name*</span>
-                <input type="text" name="last_name" placeholder="Last name" required>
-              </label>
-              <label class="bv-site-footer__field">
-                <span>Email*</span>
-                <input type="email" name="email" placeholder="name@email.com" required>
-              </label>
-              <button type="submit" class="bv-site-footer__submit">Submit</button>
-            </form>
+            <ul class="bv-site-footer__links">
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/careers">Careers</a></li>
+              <li><a href="/success-stories">Success Stories</a></li>
+              <li><a href="/blogs">Blogs</a></li>
+              <li><a href="/get-started">Contact Us</a></li>
+            </ul>
           </div>
         </div>
       </div>
