@@ -620,18 +620,17 @@ function buildIframePage(slug) {
               <li><a href="/blogs">Whitepapers</a></li>
               <li><a href="/blogs">Webinars</a></li>
               <li><a href="/get-started">FAQs</a></li>
-              <li><a href="/blogs">Knowledge Base</a></li>
               <li><a href="/success-stories">Testimonials</a></li>
             </ul>
           </div>
           <div class="footer-col-get-started bv-site-footer__col">
             <h6 class="bv-site-footer__heading">Get started</h6>
             <ul class="bv-site-footer__links">
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/careers">Careers</a></li>
-              <li><a href="/success-stories">Success Stories</a></li>
-              <li><a href="/blogs">Blogs</a></li>
-              <li><a href="/get-started">Contact Us</a></li>
+              <li><a href="/get-started">Email Us</a></li>
+              <li><a href="/get-started">Call Us</a></li>
+              <li><a href="/get-started">Location</a></li>
+              <li><a href="/get-started">FAQs</a></li>
+              <li><a href="/get-started">Schedule a Demo</a></li>
             </ul>
           </div>
         </div>
