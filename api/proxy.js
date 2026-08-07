@@ -516,9 +516,9 @@ function buildIframePage(slug) {
 
     /* Iframe container clips Wix banner */
     #wix-wrap{overflow:hidden;position:relative;}
-    ${slug === 'about' ? '#wix-wrap{height:5000px;}' : ''}
-    ${slug === 'careers' ? '#wix-wrap{height:4000px;}' : ''}
-    ${slug === 'get-started' ? '#wix-wrap{height:4000px;}' : ''}
+    ${slug === 'about' ? '#wix-wrap{height:6000px;}' : ''}
+    ${slug === 'careers' ? '#wix-wrap{height:3000px;}' : ''}
+    ${slug === 'get-started' ? '#wix-wrap{height:3000px;}' : ''}
     #wix-frame{width:100%;height:calc(100% + 50px);border:none;display:block;position:absolute;top:-50px;left:0;}
   </style>
 </head>
