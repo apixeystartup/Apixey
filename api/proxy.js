@@ -441,7 +441,7 @@ function buildIframePage(slug) {
     body{font-family:ki,sans-serif;overflow-x:hidden;padding-top:80px;}
 
     /* Header - NOT fixed, scrolls with page */
-    #bv-header{width:100%;padding:16px 0 18px 0;background:rgba(255,255,255,0.95);box-sizing:border-box;will-change:transform;position:fixed;top:0;left:0;z-index:999;}
+    #bv-header{width:100%;padding:16px 0 18px 0;background:rgba(255,255,255,0.95);box-sizing:border-box;will-change:transform;position:fixed;top:0;left:0;z-index:9999;}
     #bv-header,#bv-header span,#bv-header div,#bv-header a{font-family:ki,sans-serif;}
     #bv-header .bv-sep{font-family:teknolog,sans-serif;}
     #bv-header .btn-text-cta{font-family:teknolog,sans-serif;}
@@ -517,7 +517,7 @@ function buildIframePage(slug) {
     @media(min-width:1024px){.bv-site-footer__grid{display:grid;grid-template-columns:minmax(200px,1.35fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.8fr) minmax(160px,1fr);align-items:start;gap:1.25rem 1rem;}.bv-site-footer__col--explore{display:none;}.footer-resources-form-row{display:contents;}.bv-site-footer__brand{flex:unset;max-width:none;}.bv-site-footer__col{flex:unset;min-width:0;padding-top:0.5rem;}.footer-col-resources,.footer-col-get-started{flex:unset;max-width:none;}.bv-site-footer__heading{font-size:1.05rem;position:relative;padding-bottom:0.5rem;}.bv-site-footer__heading::after{content:"";display:block;width:2.5rem;height:3px;margin-top:0.35rem;background:#13b0cb;}.bv-site-footer__links a{font-size:0.72rem;white-space:normal;line-height:1.35;}.footer-legal{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;}.footer-legal__links{margin-top:0}}
 
     /* Iframe container clips Wix banner */
-    #wix-wrap{overflow:hidden;position:relative;}
+    #wix-wrap{overflow:hidden;position:relative;z-index:1;}
     ${slug === 'about' ? '#wix-wrap{height:5450px;}@media(max-width:767px){#wix-wrap{height:7940px;}}' : ''}
     ${slug === 'careers' ? '#wix-wrap{height:2450px;margin-top:80px;}@media(max-width:767px){#wix-wrap{height:1200px;margin-top:20px;}#wix-frame{top:0!important;height:1200px!important;}}' : ''}
     ${slug === 'get-started' ? '#wix-wrap{height:3150px;}' : ''}
@@ -659,7 +659,7 @@ function buildIframePage(slug) {
       document.addEventListener('click',function(e){if(nav.classList.contains('active')&&!nav.contains(e.target)&&!btn.contains(e.target)){nav.classList.remove('active');btn.classList.remove('active');document.body.classList.remove('bv-menu-open');}});
     }
     var navCSS=document.createElement('style');
-    navCSS.textContent='#bv-header{position:fixed;top:0;left:0;z-index:999;width:100%}.bv-nav-links.active{display:flex!important;flex-direction:column!important;position:fixed!important;top:60px!important;left:0!important;right:0!important;background:white!important;padding:2rem 1.5rem!important;box-shadow:0 10px 30px rgba(0,0,0,0.1)!important;gap:1.5rem!important;z-index:1000!important;border-top:1px solid rgba(0,0,0,0.05)!important}.bv-nav-links.active a{color:black!important;font-size:1.2rem!important;font-weight:600!important;text-align:left!important;width:100%!important;display:block!important}.bv-nav-links.active span.bv-sep{display:none!important}';
+    navCSS.textContent='#bv-header{position:fixed;top:0;left:0;z-index:9999;width:100%}.bv-nav-links.active{display:flex!important;flex-direction:column!important;position:fixed!important;top:60px!important;left:0!important;right:0!important;background:white!important;padding:2rem 1.5rem!important;box-shadow:0 10px 30px rgba(0,0,0,0.1)!important;gap:1.5rem!important;z-index:10000!important;border-top:1px solid rgba(0,0,0,0.05)!important}.bv-nav-links.active a{color:black!important;font-size:1.2rem!important;font-weight:600!important;text-align:left!important;width:100%!important;display:block!important}.bv-nav-links.active span.bv-sep{display:none!important}';
     document.head.appendChild(navCSS);
 
     var hdr=document.getElementById('bv-header');
