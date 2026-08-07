@@ -73,8 +73,8 @@
 }
 
 .bv-site-footer__tagline {
-	font-size: 0.875rem;
-	line-height: 1.5;
+	font-size: 0.75rem;
+	line-height: 1.4;
 	color: #315e60;
 	margin: 0;
 }
@@ -106,7 +106,7 @@
 }
 
 .bv-site-footer__links a {
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	text-decoration: none;
 	color: #2d6668;
 	text-transform: uppercase;
