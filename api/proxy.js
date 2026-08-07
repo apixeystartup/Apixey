@@ -394,10 +394,18 @@ function buildFAQSection() {
   return `
     <div class="bv-faq-section" style="font-family:ki,sans-serif;max-width:900px;margin:0 auto;padding:40px 20px 60px;">
       <h2 style="font-family:teknolog,sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;text-transform:uppercase;text-align:center;margin-bottom:24px;color:#000;">Frequently Asked Questions</h2>
+      <style>
+        .bv-faq-item{border-bottom:1px solid rgba(0,0,0,0.1);}
+        .bv-faq-q{font-family:teknolog,sans-serif;font-size:1rem;font-weight:600;color:#0f5053;margin:0;padding:16px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none;}
+        .bv-faq-q::after{content:"+";font-size:1.2rem;color:#0f766e;transition:transform 0.3s ease;flex-shrink:0;margin-left:12px;}
+        .bv-faq-item.open .bv-faq-q::after{transform:rotate(45deg);}
+        .bv-faq-a{font-family:ki,sans-serif;font-size:0.9rem;color:#333;line-height:1.6;margin:0;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease;}
+        .bv-faq-item.open .bv-faq-a{max-height:200px;padding-bottom:16px;}
+      </style>
       ${faqs.map(f => `
-        <div style="border-bottom:1px solid rgba(0,0,0,0.1);padding:16px 0;">
-          <h3 style="font-family:teknolog,sans-serif;font-size:1rem;font-weight:600;color:#0f5053;margin:0 0 8px;">${f.q}</h3>
-          <p style="font-family:ki,sans-serif;font-size:0.9rem;color:#333;line-height:1.6;margin:0;">${f.a}</p>
+        <div class="bv-faq-item">
+          <div class="bv-faq-q" onclick="this.parentElement.classList.toggle('open')">${f.q}</div>
+          <p class="bv-faq-a">${f.a}</p>
         </div>
       `).join('')}
     </div>
