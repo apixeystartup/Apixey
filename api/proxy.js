@@ -165,13 +165,12 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
     '.bv-right-nav{padding-right:10px}',
     '@media(min-width:768px){.bv-logo{padding-left:40px}}',
     '@media(min-width:768px){.bv-right-nav{padding-right:40px}}',
-    '#bv-footer{font-family:ki,sans-serif!important}',
-    '#bv-footer .bv-site-footer__heading{font-family:teknolog,sans-serif!important}',
-    '#bv-footer .bv-site-footer__links a{font-family:ki,sans-serif}',
-    '.bv-site-footer{position:relative;z-index:20;width:100%;color:#0f5053}',
+    '#bv-header,#bv-header span,#bv-header div,#bv-header a{font-family:ki,sans-serif}',
+    '#bv-header .bv-sep{font-family:teknolog,sans-serif}',
+    '#bv-header .btn-text-cta{font-family:teknolog,sans-serif}',
     '#bv-footer,#bv-footer span,#bv-footer p,#bv-footer a,#bv-footer ul,#bv-footer li{font-family:ki,sans-serif}',
     '#bv-footer .bv-site-footer__heading{font-family:teknolog,sans-serif}',
-    '#bv-site-footer{position:relative;z-index:20;width:100%;color:#0f5053;overflow:hidden;font-family:ki,sans-serif}',
+    '.bv-site-footer{position:relative;z-index:20;width:100%;color:#0f5053;overflow:hidden;font-family:ki,sans-serif}',
     '.bv-site-footer__shape{display:block;width:100%;margin-bottom:-1px}',
     '.bv-site-footer__inner{background:#fff;padding:1.5rem 1rem 0}',
     '@media(min-width:768px){.bv-site-footer__inner{padding:2rem 2rem 0}}',
@@ -210,7 +209,7 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
     hdr.id='bv-header';
     hdr.innerHTML='<div class="bv-header-inner">'+
       '<a href="/" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">'+
-        '<span style="font-family:ki,sans-serif;font-size:24px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>'+
+        '<span style="font-size:24px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>'+
       '</a>'+
       '<div style="display:flex;flex-direction:row;align-items:center;gap:16px;" class="bv-right-nav">'+
         '<div id="bv-nav-links" class="bv-nav-links">'+
@@ -517,7 +516,7 @@ function buildIframePage(slug) {
   <header id="bv-header">
     <div class="bv-header-inner">
        <a href="/" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">
-        <span style="font-family:ki,sans-serif;font-size:24px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
+        <span style="font-size:24px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
       </a>
       <div style="display:flex;flex-direction:row;align-items:center;gap:16px;" class="bv-right-nav">
         <div id="bv-nav-links" class="bv-nav-links">
