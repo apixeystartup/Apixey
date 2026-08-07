@@ -438,7 +438,7 @@ function buildIframePage(slug) {
     @font-face{font-family:"ki";src:url("/wp-content/themes/startdigital/static/font/ki.woff?v=2")}
     @font-face{font-family:"teknolog";src:url("/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2?v=2")}
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:ki,sans-serif;overflow-x:hidden;padding-top:80px!important;}
+    body{font-family:ki,sans-serif;overflow-x:hidden;padding-top:80px;}
 
     /* Header - NOT fixed, scrolls with page */
     #bv-header{width:100%;padding:16px 0 18px 0;background:rgba(255,255,255,0.95);box-sizing:border-box;will-change:transform;position:fixed;top:0;left:0;z-index:999;}
