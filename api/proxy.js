@@ -127,8 +127,8 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
 (function(){
   var css=document.createElement('style');
   css.textContent=[
-    '@font-face{font-family:"ki";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/ki.woff?v=2")}',
-    '@font-face{font-family:"teknolog";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2?v=2")}',
+    '@font-face{font-family:"ki";src:url("/wp-content/themes/startdigital/static/font/ki.woff?v=2")}',
+    '@font-face{font-family:"teknolog";src:url("/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2?v=2")}',
     '#SITE_HEADER,#SITE_HEADER-wrapper,#SITE_HEADER-placeholder{visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}',
     '#SITE_FOOTER,#SITE_FOOTER-wrapper,#SITE_FOOTER-placeholder{display:none!important}',
     '#wmbr-base,[id*="wmbr"],[class*="wmbr"]{display:none!important}',
@@ -428,8 +428,8 @@ function buildIframePage(slug) {
   <title>${pageTitle} - Brainvoice AI</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
-    @font-face{font-family:"ki";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/ki.woff?v=2")}
-    @font-face{font-family:"teknolog";src:url("https://brainvoice.ai/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2?v=2")}
+    @font-face{font-family:"ki";src:url("/wp-content/themes/startdigital/static/font/ki.woff?v=2")}
+    @font-face{font-family:"teknolog";src:url("/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2?v=2")}
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:ki,sans-serif;overflow-x:hidden;}
 
