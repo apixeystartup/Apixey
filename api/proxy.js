@@ -679,13 +679,16 @@ function buildIframePage(slug) {
 
     var frame=document.getElementById('wix-frame');
     var wrap=document.getElementById('wix-wrap');
+    var pageSlug='${slug}';
+    var heightOffsets={about:500,careers:-500,'get-started':-500};
     if(frame&&wrap){
       /* On iframe load, resize wrapper to match actual content height */
       frame.addEventListener('load',function(){
         try{
           var doc=frame.contentWindow.document.documentElement;
           var h=doc.scrollHeight;
-          if(h>100){wrap.style.height=h+'px';}
+          var offset=heightOffsets[pageSlug]||0;
+          if(h>100){wrap.style.height=(h+offset)+'px';}
         }catch(ex){}
       });
 
