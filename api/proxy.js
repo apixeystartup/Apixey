@@ -31,7 +31,7 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
       <div class="bv-site-footer__inner">
         <div class="bv-site-footer__grid">
           <div class="bv-site-footer__brand">
-            <a href="https://brainvoice.ai" class="bv-site-footer__logo-link">
+            <a href="/" class="bv-site-footer__logo-link">
               <span class="bv-site-footer__logo-text">BRAINVOICE.<span class="bv-site-footer__logo-ai">AI</span></span>
             </a>
             <p class="bv-site-footer__tagline">Brainvoice.AI is a cutting-edge digital marketing analytical and IT company dedicated to revolutionizing the way organizations achieve business growth and expansion.</p>
@@ -206,7 +206,7 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
     var hdr=document.createElement('header');
     hdr.id='bv-header';
     hdr.innerHTML='<div class="bv-header-inner">'+
-      '<a href="https://brainvoice.ai" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">'+
+      '<a href="/" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">'+
         '<span style="font-family:ki,sans-serif;font-size:24px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>'+
       '</a>'+
       '<div style="display:flex;flex-direction:row;align-items:center;gap:16px;" class="bv-right-nav">'+
@@ -510,7 +510,7 @@ function buildIframePage(slug) {
 <body>
   <header id="bv-header">
     <div class="bv-header-inner">
-      <a href="https://brainvoice.ai" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">
+       <a href="/" rel="home" style="display:flex;align-items:center;gap:12px;text-decoration:none;" class="bv-logo">
         <span style="font-family:ki,sans-serif;font-size:24px;font-weight:700;color:black;letter-spacing:1px;">BRAINVOICE.<span style="color:#51C186;">AI</span></span>
       </a>
       <div style="display:flex;flex-direction:row;align-items:center;gap:16px;" class="bv-right-nav">
@@ -545,7 +545,7 @@ function buildIframePage(slug) {
     <div class="bv-site-footer__inner">
       <div class="bv-site-footer__grid">
         <div class="bv-site-footer__brand">
-          <a href="https://brainvoice.ai" class="bv-site-footer__logo-link">
+          <a href="/" class="bv-site-footer__logo-link">
             <span class="bv-site-footer__logo-text">BRAINVOICE.<span class="bv-site-footer__logo-ai">AI</span></span>
           </a>
           <p class="bv-site-footer__tagline">Brainvoice.AI is a cutting-edge digital marketing analytical and IT company dedicated to revolutionizing the way organizations achieve business growth and expansion.</p>
