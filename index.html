@@ -1173,6 +1173,12 @@
 				padding: 5px;
 			}
 
+			.mobile-menu-btn.active .fa-bars { display: none; }
+			.mobile-menu-btn .fa-times { display: none; }
+			.mobile-menu-btn.active .fa-times { display: inline; }
+
+			body.bv-menu-open { overflow: hidden; }
+
 			.nav-links.active {
 				display: flex !important;
 				flex-direction: column !important;
@@ -1590,6 +1596,7 @@
 				<!-- Hamburger Menu for Mobile -->
 				<button class="mobile-menu-btn flex tablet:hidden" id="mobileMenuBtn" aria-label="Menu">
 					<i class="fas fa-bars"></i>
+					<i class="fas fa-times"></i>
 				</button>
 			</div>
 		</div>
@@ -2781,11 +2788,15 @@
 					mobileMenuBtn.addEventListener('click', (e) => {
 						e.stopPropagation();
 						navLinks.classList.toggle('active');
+						mobileMenuBtn.classList.toggle('active');
+						document.body.classList.toggle('bv-menu-open');
 					});
 
 					navLinks.querySelectorAll('a').forEach((link) => {
 						link.addEventListener('click', () => {
 							navLinks.classList.remove('active');
+							mobileMenuBtn.classList.remove('active');
+							document.body.classList.remove('bv-menu-open');
 						});
 					});
 
@@ -2795,6 +2806,8 @@
 							!navLinks.contains(e.target) &&
 							!mobileMenuBtn.contains(e.target)) {
 							navLinks.classList.remove('active');
+							mobileMenuBtn.classList.remove('active');
+							document.body.classList.remove('bv-menu-open');
 						}
 					});
 				}
