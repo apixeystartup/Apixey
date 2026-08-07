@@ -493,7 +493,7 @@ function buildIframePage(slug) {
     .bv-site-footer__links a{font-size:0.8rem;text-decoration:none;color:#2d6668;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap;}
     .bv-site-footer__links a:hover{color:#13b0cb;}
     .footer-social-links{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:0.5rem;}
-    .bv-social-btn{width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;background:#0f8688;color:#fff;text-decoration:none;font-size:1rem;transition:background 0.2s ease,transform 0.2s ease;}
+    .bv-social-btn{width:3rem;height:3rem;display:flex;align-items:center;justify-content:center;background:#0f8688;color:#fff;text-decoration:none;font-size:1.25rem;border-radius:4px;transition:background 0.2s ease,transform 0.2s ease;}
     .bv-social-btn:hover{background:linear-gradient(135deg,#0a6f71,#0ea2bb);transform:translateY(-2px);}
     .footer-resources-form-row{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-between;gap:1rem;width:100%;flex:1 1 100%;}
     .footer-col-resources{flex:1 1 42%;max-width:48%;}
