@@ -383,6 +383,27 @@ function buildBlogSection(posts) {
   `;
 }
 
+function buildFAQSection() {
+  const faqs = [
+    { q: 'What services does Brainvoice.AI offer?', a: 'We offer digital marketing, web development, IT consulting, software development, and digital transformation services tailored to your business needs.' },
+    { q: 'How can I get started with Brainvoice.AI?', a: 'Simply reach out to us via email, phone, or schedule a demo. Our team will assess your requirements and create a customized plan for your business.' },
+    { q: 'What industries do you serve?', a: 'We serve a wide range of industries including healthcare, finance, retail, education, and technology, providing customized solutions for each sector.' },
+    { q: 'How long does a typical project take?', a: 'Project timelines vary based on scope and complexity. A typical website project takes 4-8 weeks, while larger digital transformation projects may take 3-6 months.' },
+    { q: 'Do you provide ongoing support?', a: 'Yes, we offer comprehensive post-launch support and maintenance packages to ensure your digital solutions continue to perform optimally.' },
+  ];
+  return `
+    <div class="bv-faq-section" style="font-family:ki,sans-serif;max-width:900px;margin:0 auto;padding:40px 20px 60px;">
+      <h2 style="font-family:teknolog,sans-serif;font-size:clamp(1.2rem,3vw,1.8rem);font-weight:700;text-transform:uppercase;text-align:center;margin-bottom:24px;color:#000;">Frequently Asked Questions</h2>
+      ${faqs.map(f => `
+        <div style="border-bottom:1px solid rgba(0,0,0,0.1);padding:16px 0;">
+          <h3 style="font-family:teknolog,sans-serif;font-size:1rem;font-weight:600;color:#0f5053;margin:0 0 8px;">${f.q}</h3>
+          <p style="font-family:ki,sans-serif;font-size:0.9rem;color:#333;line-height:1.6;margin:0;">${f.a}</p>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
 function buildMapSection() {
   const address = 'Brainvoice.ai, Ascendas, International Tech Park, Bridge+, Chennai, Tamil Nadu 600013';
   const encodedAddress = encodeURIComponent(address);
@@ -520,7 +541,7 @@ function buildIframePage(slug) {
     #wix-wrap{overflow:hidden;position:relative;z-index:1;}
     ${slug === 'about' ? '#wix-wrap{height:5450px;}@media(max-width:767px){#wix-wrap{height:7940px;}}' : ''}
     ${slug === 'careers' ? '#wix-wrap{height:2450px;margin-top:80px;}@media(max-width:767px){#wix-wrap{height:1350px;margin-top:20px;}#bv-header{padding-bottom:0!important;}}' : ''}
-    ${slug === 'get-started' ? '#wix-wrap{height:3150px;overflow:hidden;}@media(max-width:767px){#wix-wrap{height:calc(5000px * 100vw / 1024)!important;overflow:hidden!important;}#wix-frame{top:0!important;left:0!important;width:1024px!important;height:5000px!important;transform-origin:top left;transform:scale(calc(100vw / 1024));}}' : ''}
+    ${slug === 'get-started' ? '#wix-wrap{height:3150px;overflow:hidden;}@media(max-width:767px){#wix-wrap{height:3200px!important;}#wix-frame{top:0!important;height:3200px!important;}}' : ''}
     #wix-frame{width:100%;height:calc(100% + 50px);border:none;display:block;position:absolute;top:-50px;left:0;}
   </style>
 </head>
@@ -554,6 +575,7 @@ function buildIframePage(slug) {
   </header>
 
   <div id="wix-wrap"><iframe id="wix-frame" src="${wixUrl}" scrolling="no"></iframe></div>
+  ${slug === 'get-started' ? '<div class="bv-mobile-only-sections" style="display:none;">' + buildFAQSection() + buildMapSection() + '</div><style>@media(max-width:767px){.bv-mobile-only-sections{display:block!important;}}</style>' : ''}
 
   <footer id="bv-footer" class="bv-site-footer">
     <svg class="bv-site-footer__shape" viewBox="0 0 1316 71" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
