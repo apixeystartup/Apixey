@@ -135,6 +135,7 @@ function buildInjectionScript(blogSectionHtml, mapSectionHtml) {
     '#WIX_ADS{display:none!important}',
     ':root{--wix-ads-height:0px!important}',
     '#SITE_HEADER,#SITE_HEADER-wrapper,#SITE_HEADER-placeholder{visibility:hidden!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}',
+    'body{padding-top:80px!important}',
     '#bv-header{width:100%;padding:16px 0 18px 0;background:rgba(255,255,255,0.95);box-sizing:border-box;will-change:transform;position:fixed;top:0;left:0;z-index:999}',
     '#bv-header,#bv-header span,#bv-header div,#bv-header a{font-family:ki,sans-serif}',
     '#bv-header .bv-sep{font-family:teknolog,sans-serif}',
@@ -437,7 +438,7 @@ function buildIframePage(slug) {
     @font-face{font-family:"ki";src:url("/wp-content/themes/startdigital/static/font/ki.woff?v=2")}
     @font-face{font-family:"teknolog";src:url("/wp-content/themes/startdigital/static/font/nb_architekt_bold.woff2?v=2")}
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:ki,sans-serif;overflow-x:hidden;}
+    body{font-family:ki,sans-serif;overflow-x:hidden;padding-top:80px;}
 
     /* Header - NOT fixed, scrolls with page */
     #bv-header{width:100%;padding:16px 0 18px 0;background:rgba(255,255,255,0.95);box-sizing:border-box;will-change:transform;position:fixed;top:0;left:0;z-index:999;}
@@ -518,7 +519,7 @@ function buildIframePage(slug) {
     /* Iframe container clips Wix banner */
     #wix-wrap{overflow:hidden;position:relative;}
     ${slug === 'about' ? '#wix-wrap{height:5450px;}' : ''}
-    ${slug === 'careers' ? '#wix-wrap{height:2950px;margin-top:80px;}' : ''}
+    ${slug === 'careers' ? '#wix-wrap{height:2950px;}' : ''}
     ${slug === 'get-started' ? '#wix-wrap{height:3150px;}' : ''}
     #wix-frame{width:100%;height:calc(100% + 50px);border:none;display:block;position:absolute;top:-50px;left:0;}
   </style>
