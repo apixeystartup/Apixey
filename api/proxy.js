@@ -475,6 +475,45 @@ function buildIframePage(slug) {
 
 
 
+    /* Footer */
+    #bv-footer,#bv-footer *{font-family:ki,sans-serif!important;}
+    .bv-site-footer{position:relative;z-index:20;width:100%;color:#0f5053;overflow:hidden;}
+    .bv-site-footer__shape{display:block;width:100%;margin-bottom:-1px;}
+    .bv-site-footer__inner{background:#fff;padding:1.5rem 1rem 0;}
+    @media(min-width:768px){.bv-site-footer__inner{padding:2rem 2rem 0;}}
+    .bv-site-footer__grid{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:1.5rem 1rem;max-width:1400px;margin:0 auto;}
+    .bv-site-footer__brand{flex:1 1 100%;min-width:0;max-width:230px;display:flex;flex-direction:column;gap:1rem;}
+    .bv-site-footer__logo-link{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
+    .bv-site-footer__logo-text{font-size:1.25rem;font-weight:700;color:#000;letter-spacing:0.04em;}
+    .bv-site-footer__logo-ai{color:#51c186;}
+    .bv-site-footer__tagline{font-size:0.875rem;line-height:1.5;color:#315e60;margin:0;}
+    .bv-site-footer__col{flex:1 1 140px;min-width:0;padding-top:0.5rem;}
+    .bv-site-footer__heading{font-size:clamp(1rem,2.5vw,1.35rem);font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#0f5053;margin:0 0 0.75rem;white-space:nowrap;}
+    .bv-site-footer__links{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.35rem;}
+    .bv-site-footer__links a{font-size:0.8rem;text-decoration:none;color:#2d6668;text-transform:uppercase;letter-spacing:0.04em;white-space:nowrap;}
+    .bv-site-footer__links a:hover{color:#13b0cb;}
+    .footer-social-links{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;gap:0.5rem;}
+    .bv-social-btn{width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;background:#0f8688;color:#fff;text-decoration:none;font-size:1rem;transition:background 0.2s ease,transform 0.2s ease;}
+    .bv-social-btn:hover{background:linear-gradient(135deg,#0a6f71,#0ea2bb);transform:translateY(-2px);}
+    .footer-resources-form-row{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:flex-start;justify-content:space-between;gap:1rem;width:100%;flex:1 1 100%;}
+    .footer-col-resources{flex:1 1 42%;max-width:48%;}
+    .footer-col-get-started{flex:1 1 58%;max-width:52%;}
+    .bv-site-footer__form{display:flex;flex-direction:column;gap:0.5rem;}
+    .bv-site-footer__field{display:flex;flex-direction:column;gap:0.15rem;}
+    .bv-site-footer__field span{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.04em;color:#0f5053;}
+    .bv-site-footer__field input{width:100%;border:none;border-bottom:1px solid rgba(15,80,83,0.35);background:transparent;padding:0.4rem 0;font-size:0.8rem;font-family:inherit;color:#0f5053;outline:none;}
+    .bv-site-footer__field input:focus{border-bottom-color:#13b0cb;}
+    .bv-site-footer__submit{width:100%;margin-top:0.25rem;padding:0.55rem 0.75rem;border:none;background:#167f7f;color:#fff;font-family:inherit;font-size:0.85rem;cursor:pointer;text-transform:uppercase;letter-spacing:0.05em;}
+    .bv-site-footer__submit:hover{background:#0f8688;}
+    .footer-legal{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.65rem;width:100%;max-width:1400px;margin:0 auto;padding:1.75rem 0 1.5rem;border-top:1px dashed rgba(15,80,83,0.35);text-align:center;font-size:0.75rem;}
+    .footer-legal__links{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:center;gap:0.75rem;margin-top:0.75rem;}
+    .footer-legal__links a{color:#0e7d80;text-decoration:none;}
+    .footer-legal__links a:hover{text-decoration:underline;}
+    .footer-legal__divider{width:1px;height:0.75rem;background:#0f5053;flex-shrink:0;}
+    .footer-legal__credit a{color:#315e60;text-decoration:none;}
+    @media(max-width:768px){.bv-site-footer__brand{flex:1 1 100%;max-width:280px;}.bv-site-footer__col{flex:1 1 40%;min-width:40%;}.footer-resources-form-row{flex:1 1 100%;width:100%;}.footer-col-resources{flex:1 1 42%;max-width:48%;}.footer-col-get-started{flex:1 1 58%;max-width:52%;}}
+    @media(min-width:1024px){.bv-site-footer__grid{display:grid;grid-template-columns:minmax(200px,1.35fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.85fr) minmax(0,0.8fr) minmax(160px,1fr);align-items:start;gap:1.25rem 1rem;}.bv-site-footer__col--explore{display:none;}.footer-resources-form-row{display:contents;}.bv-site-footer__brand{flex:unset;max-width:none;}.bv-site-footer__col{flex:unset;min-width:0;padding-top:0.5rem;}.footer-col-resources,.footer-col-get-started{flex:unset;max-width:none;}.bv-site-footer__heading{font-size:1.05rem;position:relative;padding-bottom:0.5rem;}.bv-site-footer__heading::after{content:"";display:block;width:2.5rem;height:3px;margin-top:0.35rem;background:#13b0cb;}.bv-site-footer__links a{font-size:0.72rem;white-space:normal;line-height:1.35;}.footer-legal{flex-direction:row;justify-content:space-between;align-items:center;text-align:left;}.footer-legal__links{margin-top:0}}
+
     /* Iframe container clips Wix banner */
     #wix-wrap{overflow:hidden;position:relative;height:4500px;}
     #wix-frame{width:100%;height:calc(100% + 50px);border:none;display:block;position:absolute;top:-50px;left:0;}
@@ -510,6 +549,110 @@ function buildIframePage(slug) {
   </header>
 
   <div id="wix-wrap"><iframe id="wix-frame" src="${wixUrl}" scrolling="no"></iframe></div>
+
+  <footer id="bv-footer" class="bv-site-footer">
+    <svg class="bv-site-footer__shape" viewBox="0 0 1316 71" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M0.398438 71H1316V0H71.3984L0.398438 71Z" fill="white" />
+    </svg>
+    <div class="bv-site-footer__inner">
+      <div class="bv-site-footer__grid">
+        <div class="bv-site-footer__brand">
+          <a href="https://brainvoice.ai" class="bv-site-footer__logo-link">
+            <span class="bv-site-footer__logo-text">BRAINVOICE.<span class="bv-site-footer__logo-ai">AI</span></span>
+          </a>
+          <p class="bv-site-footer__tagline">Brainvoice.AI is a cutting-edge digital marketing analytical and IT company dedicated to revolutionizing the way organizations achieve business growth and expansion.</p>
+          <div class="footer-social-links">
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" class="bv-social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/thestart.agency/" target="_blank" rel="noopener noreferrer" class="bv-social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/thestartagency" target="_blank" rel="noopener noreferrer" class="bv-social-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="bv-social-btn" aria-label="X"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" class="bv-social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        <div class="bv-site-footer__col bv-site-footer__col--explore">
+          <h6 class="bv-site-footer__heading">Explore</h6>
+          <ul class="bv-site-footer__links">
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/success-stories">Success Stories</a></li>
+            <li><a href="/get-started">Get Started</a></li>
+          </ul>
+        </div>
+        <div class="bv-site-footer__col">
+          <h6 class="bv-site-footer__heading">About Us</h6>
+          <ul class="bv-site-footer__links">
+            <li><a href="/about">About WebTech</a></li>
+            <li><a href="/about">Our Team</a></li>
+            <li><a href="/about">Mission &amp; Values</a></li>
+            <li><a href="/careers">Careers</a></li>
+            <li><a href="/about">Community Involvement</a></li>
+          </ul>
+        </div>
+        <div class="bv-site-footer__col">
+          <h6 class="bv-site-footer__heading">Services</h6>
+          <ul class="bv-site-footer__links">
+            <li><a href="/about">Software Development</a></li>
+            <li><a href="/get-started">IT Consulting</a></li>
+            <li><a href="/get-started">Web Design</a></li>
+            <li><a href="/success-stories">Digital Transformation</a></li>
+            <li><a href="/get-started">Project Management</a></li>
+          </ul>
+        </div>
+        <div class="bv-site-footer__col">
+          <h6 class="bv-site-footer__heading">Solutions</h6>
+          <ul class="bv-site-footer__links">
+            <li><a href="/success-stories">Industry Solutions</a></li>
+            <li><a href="/get-started">Custom Solutions</a></li>
+            <li><a href="/success-stories">Case Studies</a></li>
+            <li><a href="/success-stories">Client Success</a></li>
+            <li><a href="/get-started">Partnership</a></li>
+          </ul>
+        </div>
+        <div class="footer-resources-form-row">
+          <div class="footer-col-resources bv-site-footer__col">
+            <h6 class="bv-site-footer__heading">Resources</h6>
+            <ul class="bv-site-footer__links">
+              <li><a href="/blogs">Blog</a></li>
+              <li><a href="/blogs">Whitepapers</a></li>
+              <li><a href="/blogs">Webinars</a></li>
+              <li><a href="/get-started">FAQs</a></li>
+              <li><a href="/blogs">Knowledge Base</a></li>
+              <li><a href="/success-stories">Testimonials</a></li>
+            </ul>
+          </div>
+          <div class="footer-col-get-started bv-site-footer__col">
+            <h6 class="bv-site-footer__heading">Get started</h6>
+            <form class="bv-site-footer__form" action="/get-started" method="get">
+              <label class="bv-site-footer__field">
+                <span>First name*</span>
+                <input type="text" name="first_name" placeholder="First name" required>
+              </label>
+              <label class="bv-site-footer__field">
+                <span>Last name*</span>
+                <input type="text" name="last_name" placeholder="Last name" required>
+              </label>
+              <label class="bv-site-footer__field">
+                <span>Email*</span>
+                <input type="email" name="email" placeholder="name@email.com" required>
+              </label>
+              <button type="submit" class="bv-site-footer__submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <div class="footer-legal__links">
+          <a href="https://thestart.com.au/terms-conditions/">Terms &amp; conditions</a>
+          <span class="footer-legal__divider" aria-hidden="true">|</span>
+          <a href="https://thestart.com.au/privacy/">Privacy policy</a>
+        </div>
+        <div class="footer-legal__credit">
+          <a href="https://thestart.com.au" target="_blank" rel="noopener noreferrer">Built for Brainvoice AI</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
     var btn=document.getElementById('bv-menu-btn');
