@@ -519,7 +519,7 @@ function buildIframePage(slug) {
     /* Iframe container clips Wix banner */
     #wix-wrap{overflow:hidden;position:relative;}
     ${slug === 'about' ? '#wix-wrap{height:5450px;}@media(max-width:767px){#wix-wrap{height:7940px;}}' : ''}
-    ${slug === 'careers' ? 'body{padding-top:0!important;}#wix-wrap{height:2450px;margin-top:50px;overflow:hidden;}#wix-banner-cover{position:absolute;bottom:0;left:0;right:0;height:60px;background:white;z-index:10;}@media(max-width:767px){#wix-wrap{height:1400px;margin-top:50px;overflow:hidden;}#wix-banner-cover{height:60px;}}' : ''}
+    ${slug === 'careers' ? 'body{padding-top:0!important;}#wix-wrap{height:2450px;margin-top:100px;overflow:hidden;}#wix-frame{clip-path:inset(0 0 50px 0);}@media(max-width:767px){#wix-wrap{height:1400px;margin-top:80px;overflow:hidden;}#wix-frame{top:0!important;height:1400px!important;clip-path:inset(0 0 80px 0);}}' : ''}
     ${slug === 'get-started' ? '#wix-wrap{height:3150px;}' : ''}
     #wix-frame{width:100%;height:calc(100% + 50px);border:none;display:block;position:absolute;top:-50px;left:0;}
   </style>
@@ -553,7 +553,7 @@ function buildIframePage(slug) {
     </div>
   </header>
 
-  <div id="wix-wrap"><iframe id="wix-frame" src="${wixUrl}" scrolling="no"></iframe>${slug === 'careers' ? '<div id="wix-banner-cover"></div>' : ''}</div>
+  <div id="wix-wrap"><iframe id="wix-frame" src="${wixUrl}" scrolling="no"></iframe></div>
 
   <footer id="bv-footer" class="bv-site-footer">
     <svg class="bv-site-footer__shape" viewBox="0 0 1316 71" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
