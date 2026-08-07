@@ -519,7 +519,7 @@ function buildIframePage(slug) {
     /* Iframe container clips Wix banner */
     #wix-wrap{overflow:hidden;position:relative;z-index:1;}
     ${slug === 'about' ? '#wix-wrap{height:5450px;}@media(max-width:767px){#wix-wrap{height:7940px;}}' : ''}
-    ${slug === 'careers' ? '#wix-wrap{height:2450px;margin-top:80px;}@media(max-width:767px){#wix-wrap{height:1350px;margin-top:20px;z-index:10000!important;}#bv-header{padding-bottom:0!important;z-index:9999;}}' : ''}
+    ${slug === 'careers' ? '#wix-wrap{height:2450px;margin-top:80px;}@media(max-width:767px){#wix-wrap{height:1350px;margin-top:20px;}#bv-header{padding-bottom:0!important;}}' : ''}
     ${slug === 'get-started' ? '#wix-wrap{height:3150px;}' : ''}
     #wix-frame{width:100%;height:calc(100% + 50px);border:none;display:block;position:absolute;top:-50px;left:0;}
   </style>
@@ -659,7 +659,7 @@ function buildIframePage(slug) {
       document.addEventListener('click',function(e){if(nav.classList.contains('active')&&!nav.contains(e.target)&&!btn.contains(e.target)){nav.classList.remove('active');btn.classList.remove('active');document.body.classList.remove('bv-menu-open');}});
     }
     var navCSS=document.createElement('style');
-    navCSS.textContent='#bv-header{position:fixed;top:0;left:0;z-index:9999;width:100%}.bv-nav-links.active{display:flex!important;flex-direction:column!important;position:fixed!important;top:60px!important;left:0!important;right:0!important;background:white!important;padding:2rem 1.5rem!important;box-shadow:0 10px 30px rgba(0,0,0,0.1)!important;gap:1.5rem!important;z-index:10001!important;border-top:1px solid rgba(0,0,0,0.05)!important}.bv-nav-links.active a{color:black!important;font-size:1.2rem!important;font-weight:600!important;text-align:left!important;width:100%!important;display:block!important}.bv-nav-links.active span.bv-sep{display:none!important}';
+    navCSS.textContent='#bv-header{position:fixed;top:0;left:0;z-index:9999;width:100%}.bv-nav-links.active{display:flex!important;flex-direction:column!important;position:fixed!important;top:60px!important;left:0!important;right:0!important;background:white!important;padding:2rem 1.5rem!important;box-shadow:0 10px 30px rgba(0,0,0,0.1)!important;gap:1.5rem!important;z-index:10000!important;border-top:1px solid rgba(0,0,0,0.05)!important}.bv-nav-links.active a{color:black!important;font-size:1.2rem!important;font-weight:600!important;text-align:left!important;width:100%!important;display:block!important}.bv-nav-links.active span.bv-sep{display:none!important}';
     document.head.appendChild(navCSS);
 
     var hdr=document.getElementById('bv-header');
